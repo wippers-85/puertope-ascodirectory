@@ -33,3 +33,4 @@ body {
         font-size: 1.25rem;
     }
 }
+header.bg-primary { background: url("hotel.jpg") no-repeat center center !important; background-size:cover !important;}
