@@ -33,5 +33,5 @@ body {
         font-size: 1.25rem;
     }
 }
-header.bg-primary { background: url("fondo.jpg") no-repeat center center !important; background-size:cover !important;}
+header.bg-primary { background: url("fondo-gp.jpg") no-repeat center center !important; background-size:cover !important;}
 header.bg-primary h1,header.bg-primary p {color: #b71c1c !important; text-shadow: 3xp 3xp 6xp rgba(0,0,0,0.6); }
