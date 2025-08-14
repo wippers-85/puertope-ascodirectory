@@ -34,4 +34,4 @@ body {
     }
 }
 header.bg-primary { background: url("hotel.jpg") no-repeat center center !important; background-size:cover !important;}
-header.bg-primary h1,header.bg-primary p {color: #ffffff !important; text-shadow: 3xp 3xp 6xp rgba(0,0,0,0.6); }
+header.bg-primary h1,header.bg-primary p {color: #00e5ff !important; text-shadow: 3xp 3xp 6xp rgba(0,0,0,0.6); }
