@@ -34,5 +34,5 @@ body {
     }
 }
 header.bg-primary { background: url("hotel.jpg") no-repeat center center !important; background-size:cover !important;}
-header.bg-primary h1,header.bg-primary p {color: #FFFFFF !important; text-shadow: 4xp 4xp 8xp rgba(0,0,0,0.6); }
+header.bg-primary h1,header.bg-primary p {color: #FFFFFF !important; text-shadow: 4px 4px 8px rgba(0,0,0,0.6); }
 header.big-primary: :before { content: ""; position: absolute; top: 0; width: 100%; background: rgba(0,0,0,0.5); }
