@@ -33,5 +33,6 @@ body {
         font-size: 1.25rem;
     }
 }
-header.bg-primary { background: url("fondo-gp.jpg") no-repeat center center !important; background-size:cover !important;}
-header.bg-primary h1,header.bg-primary p {color: #b71c1c !important; text-shadow: 3xp 3xp 6xp rgba(0,0,0,0.6); }
+header.bg-primary { background: url("hotel.jpg") no-repeat center center !important; background-size:cover !important;}
+header.bg-primary h1,header.bg-primary p {color: #FFFFFF !important; text-shadow: 4xp 4xp 8xp rgba(0,0,0,0.6); }
+header.big-primary: :before { content: ""; position: absolute; top: 0; width: 100%; background: rgba(0,0,0,0.5); }
