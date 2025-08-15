@@ -83,19 +83,19 @@ document.addEventListener('DOMContentLoaded', () => {
       terms: document.getElementById('terms').checked
     };
     // Guardar datos en localStorage (simulación) con una clave única
-    const entries = JSON.parse(localStorage.getItem('ppRegistrations') || '[]');
-    entries.push(data);
-    localStorage.setItem('ppRegistrations', JSON.stringify(entries));
+   // const entries = JSON.parse(localStorage.getItem('ppRegistrations') || '[]');
+    //entries.push(data);
+    //localStorage.setItem('ppRegistrations', JSON.stringify(entries));
     // Mostrar mensaje al usuario
-    alert(
-      currentLang === 'es'
-        ? 'Gracias por registrarte. Nos pondremos en contacto contigo pronto para completar tu inscripción.'
-        : 'Thank you for registering. We will contact you soon to complete your listing.'
+    //alert(
+     // currentLang === 'es'
+       // ? 'Gracias por registrarte. Nos pondremos en contacto contigo pronto para completar tu inscripción.'
+       // : 'Thank you for registering. We will contact you soon to complete your listing.'
     );
     // Reiniciar formulario
-    e.target.reset();
-    document.getElementById('latitude').value = '';
-    document.getElementById('longitude').value = '';
+   // e.target.reset();
+    //document.getElementById('latitude').value = '';
+    e.target.submit();     //document.getElementById('longitude').value = '';
   });
 
   // Inicializar traducciones
