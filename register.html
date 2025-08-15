@@ -25,18 +25,18 @@
     <div class="container my-4">
         <div class="row justify-content-center">
             <div class="col-12 col-md-10 col-lg-8">
-                <form id="registerForm">
+                <form id="registerForm" action="https://formspree.io/f/mzzvvjbq" method="POST">
                     <div class="mb-3">
                         <label for="businessNameES" class="form-label" data-es="Nombre del negocio (Español)" data-en="Business name (Spanish)">Nombre del negocio (Español)</label>
-                        <input type="text" class="form-control" id="businessNameES" required>
+                        <input type="text" class="form-control" id name="businessNameES" required>
                     </div>
                     <div class="mb-3">
                         <label for="businessNameEN" class="form-label" data-es="Nombre del negocio (Inglés)" data-en="Business name (English)">Nombre del negocio (Inglés)</label>
-                        <input type="text" class="form-control" id="businessNameEN" required>
+                        <input type="text" class="form-control" id name="businessNameEN" required>
                     </div>
                     <div class="mb-3">
                         <label for="category" class="form-label" data-es="Categoría" data-en="Category">Categoría</label>
-                        <select class="form-select" id="category" required>
+                        <select class="form-select" id name="category" required>
                             <option value="cafeteria" data-es="Cafetería" data-en="Café">Cafetería</option>
                             <option value="restaurant" data-es="Restaurante" data-en="Restaurant">Restaurante</option>
                             <option value="hotel" data-es="Hotel" data-en="Hotel">Hotel</option>
@@ -45,31 +45,31 @@
                     </div>
                     <div class="mb-3">
                         <label for="addressES" class="form-label" data-es="Dirección (Español)" data-en="Address (Spanish)">Dirección (Español)</label>
-                        <input type="text" class="form-control" id="addressES" required>
+                        <input type="text" class="form-control" id name="addressES" required>
                     </div>
                     <div class="mb-3">
                         <label for="addressEN" class="form-label" data-es="Dirección (Inglés)" data-en="Address (English)">Dirección (Inglés)</label>
-                        <input type="text" class="form-control" id="addressEN" required>
+                        <input type="text" class="form-control" id name="addressEN" required>
                     </div>
                     <div class="mb-3">
                         <label for="phone" class="form-label" data-es="Número de teléfono (formato internacional)" data-en="Phone number (international format)">Número de teléfono (formato internacional)</label>
-                        <input type="tel" class="form-control" id="phone" placeholder="+52XXXXXXXXXX" required>
+                        <input type="tel" class="form-control" id name="phone" placeholder="+52XXXXXXXXXX" required>
                     </div>
                     <div class="mb-3">
                         <label for="whatsapp" class="form-label" data-es="Número de WhatsApp (formato internacional)" data-en="WhatsApp number (international format)">Número de WhatsApp (formato internacional)</label>
-                        <input type="tel" class="form-control" id="whatsapp" placeholder="+52XXXXXXXXXX" required>
+                        <input type="tel" class="form-control" id name="whatsapp" placeholder="+52XXXXXXXXXX" required>
                     </div>
                     <div class="mb-3">
                         <label for="descriptionES" class="form-label" data-es="Descripción en Español" data-en="Description in Spanish">Descripción en Español</label>
-                        <textarea class="form-control" id="descriptionES" rows="3" required></textarea>
+                        <textarea class="form-control" id name="descriptionES" rows="3" required></textarea>
                     </div>
                     <div class="mb-3">
                         <label for="descriptionEN" class="form-label" data-es="Descripción en Inglés" data-en="Description in English">Descripción en Inglés</label>
-                        <textarea class="form-control" id="descriptionEN" rows="3" required></textarea>
+                        <textarea class="form-control" id name="descriptionEN" rows="3" required></textarea>
                     </div>
                     <div class="mb-3">
                         <label for="price" class="form-label" data-es="Rango de precios" data-en="Price range">Rango de precios</label>
-                        <select class="form-select" id="price" required>
+                        <select class="form-select" id name="price" required>
                             <option value="$" data-es="$ (Económico)" data-en="$ (Budget)">$</option>
                             <option value="$$" data-es="$$ (Moderado)" data-en="$$ (Moderate)">$$</option>
                             <option value="$$$" data-es="$$$ (Premium)" data-en="$$$ (Premium)">$$$</option>
@@ -78,22 +78,22 @@
                     <div class="mb-3">
                         <label class="form-label" data-es="Ubicación" data-en="Location">Ubicación</label>
                         <div class="input-group">
-                            <input type="text" class="form-control" id="latitude" placeholder="Lat" readonly required>
-                            <input type="text" class="form-control" id="longitude" placeholder="Lon" readonly required>
+                            <input type="text" class="form-control" id name="latitude" placeholder="Lat" readonly required>
+                            <input type="text" class="form-control" id name="longitude" placeholder="Lon" readonly required>
                             <button class="btn btn-outline-secondary" type="button" id="detectLocation" data-es="Detectar" data-en="Detect">Detectar</button>
                         </div>
                         <small class="form-text text-muted" data-es="Utiliza el botón para obtener tu ubicación actual." data-en="Use the button to get your current location.">Utiliza el botón para obtener tu ubicación actual.</small>
                     </div>
                     <div class="mb-3">
                         <label for="images" class="form-label" data-es="Fotos del negocio" data-en="Business photos">Fotos del negocio</label>
-                        <input class="form-control" type="file" id="images" accept="image/*" multiple>
+                        <input class="form-control" type="file" id name="images" accept="image/*" multiple>
                     </div>
                     <div class="mb-3">
                         <label for="email" class="form-label" data-es="Correo electrónico de contacto" data-en="Contact email">Correo electrónico de contacto</label>
-                        <input type="email" class="form-control" id="email" required>
+                        <input type="email" class="form-control" id name="email" required>
                     </div>
                     <div class="mb-3 form-check">
-                        <input type="checkbox" class="form-check-input" id="terms" required>
+                        <input type="checkbox" class="form-check-input" id name="terms" required>
                         <label class="form-check-label" for="terms" data-es="Acepto que me contacten para completar mi registro" data-en="I agree to be contacted to complete my registration">Acepto que me contacten para completar mi registro</label>
                     </div>
                     <button type="submit" class="btn btn-primary" data-es="Enviar" data-en="Submit">Enviar</button>
