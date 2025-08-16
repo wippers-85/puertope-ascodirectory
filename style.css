@@ -1,38 +1,50 @@
-/* General Styles */
-body {
-    font-family: "Helvetica Neue", Arial, sans-serif;
-    background-color: white;
-    color: black;
+/* style.css */
+:root {
+  --radius: 14px;
 }
 
-.section-title {
-    margin-bottom: 1rem;
-    font-weight: 600;
+body { scroll-behavior: smooth; }
+
+.navbar-brand { letter-spacing: .2px; }
+
+.card { border-radius: var(--radius); }
+.btn  { border-radius: .7rem; }
+
+input.form-control, textarea.form-control, select.form-select {
+  border-radius: .7rem;
 }
 
-.card-img-top {
-    object-fit: cover;
-    height: 160px;
+/* Categorías */
+.cat-tile {
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: var(--radius);
+  transition: transform .15s ease, box-shadow .15s ease;
+  color: inherit;
+  text-decoration: none;
+}
+.cat-tile:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0,0,0,.06);
 }
 
-.rating {
-    color: #ffc107;
+/* Botones flotantes */
+.whatsapp-float, .call-float {
+  position: fixed;
+  width: 56px;
+  height: 56px;
+  bottom: 20px;
+  border-radius: 50%;
+  color: #fff;
+  display: grid;
+  place-items: center;
+  font-size: 22px;
+  box-shadow: 0 8px 18px rgba(0,0,0,.15);
+  z-index: 1000;
+  text-decoration: none;
 }
+.whatsapp-float { right: 20px; background: #25d366; }
+.call-float     { right: 86px; background: #0d6efd; }
 
-.promo-card {
-    background-color: #fff7e6;
-    border: 1px solid #ffe0a3;
-}
-
-/* Responsive adjustments */
-@media (max-width: 576px) {
-    .navbar-brand {
-        font-size: 1rem;
-    }
-    .section-title {
-        font-size: 1.25rem;
-    }
-}
-header.bg-primary { background: beige; !important; 
-header.bg-primary h1,header.bg-primary p {color: #0000ff !important; text-shadow: 4px 4px 8px rgba(0,0,0,0.6); }
-header.big-primary: :before { content: ""; position: absolute; top: 0; width: 100%; background: rgba(0,0,0,0.5); }
+/* Rating stars alignment */
+.rating i { margin-right: 2px; }
