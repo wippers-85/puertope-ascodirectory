@@ -1,1 +1,173 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registrar negocio — Puerto Peñasco Directory</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-light">
+
+  <!-- Topbar -->
+  <nav class="navbar navbar-light bg-white border-bottom">
+    <div class="container d-flex justify-content-between align-items-center">
+      <a class="navbar-brand fw-semibold" href="index.html">Puerto Peñasco Directory</a>
+      <div class="d-flex gap-2">
+        <button class="btn btn-sm btn-outline-primary" id="langES" type="button">ES</button>
+        <button class="btn btn-sm btn-outline-primary" id="langEN" type="button">EN</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Header -->
+  <header class="py-4 text-center bg-primary text-white">
+    <div class="container">
+      <h1 class="mb-1" data-es="Registrar tu negocio" data-en="Register your business">Registrar tu negocio</h1>
+      <p class="mb-0" data-es="Completa el formulario para aparecer en el directorio" data-en="Complete the form to appear in the directory">
+        Completa el formulario para aparecer en el directorio
+      </p>
+    </div>
+  </header>
+
+  <!-- Formulario -->
+  <main class="container my-5">
+    <div class="row justify-content-center">
+      <div class="col-12 col-lg-8">
+        <div class="card shadow-sm">
+          <div class="card-body p-4 p-md-5">
+            <form id="registerForm" action="https://formspree.io/f/mzzvwjbq" method="POST" enctype="multipart/form-data" novalidate>
+              <!-- Nombres -->
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <label for="businessNameES" class="form-label" data-es="Nombre del negocio (Español)" data-en="Business name (Spanish)">Nombre del negocio (Español)</label>
+                  <input type="text" class="form-control" id="businessNameES" name="businessNameES" required>
+                </div>
+                <div class="col-md-6">
+                  <label for="businessNameEN" class="form-label" data-es="Nombre del negocio (Inglés)" data-en="Business name (English)">Nombre del negocio (Inglés)</label>
+                  <input type="text" class="form-control" id="businessNameEN" name="businessNameEN" required>
+                </div>
+              </div>
+
+              <!-- Categoría -->
+              <div class="mt-3">
+                <label for="category" class="form-label" data-es="Categoría" data-en="Category">Categoría</label>
+                <select class="form-select" id="category" name="category" required>
+                  <option value="restaurant" data-es="Restaurante" data-en="Restaurant">Restaurante</option>
+                  <option value="hotel" data-es="Hotel" data-en="Hotel">Hotel</option>
+                  <option value="cafeteria" data-es="Cafetería" data-en="Café">Cafetería</option>
+                  <option value="exchange" data-es="Casa de cambio" data-en="Currency exchange">Casa de cambio</option>
+                  <option value="tour" data-es="Tour" data-en="Tour">Tour</option>
+                </select>
+              </div>
+
+              <!-- Dirección -->
+              <div class="row g-3 mt-1">
+                <div class="col-md-6">
+                  <label for="addressES" class="form-label" data-es="Dirección (Español)" data-en="Address (Spanish)">Dirección (Español)</label>
+                  <input type="text" class="form-control" id="addressES" name="addressES" required>
+                </div>
+                <div class="col-md-6">
+                  <label for="addressEN" class="form-label" data-es="Dirección (Inglés)" data-en="Address (English)">Dirección (Inglés)</label>
+                  <input type="text" class="form-control" id="addressEN" name="addressEN" required>
+                </div>
+              </div>
+
+              <!-- Contacto -->
+              <div class="row g-3 mt-1">
+                <div class="col-md-6">
+                  <label for="phone" class="form-label" data-es="Teléfono (formato internacional)" data-en="Phone (international format)">Teléfono (formato internacional)</label>
+                  <input type="tel" class="form-control" id="phone" name="phone" placeholder="+52XXXXXXXXXX" required>
+                </div>
+                <div class="col-md-6">
+                  <label for="whatsapp" class="form-label" data-es="WhatsApp (formato internacional)" data-en="WhatsApp (international format)">WhatsApp (formato internacional)</label>
+                  <input type="tel" class="form-control" id="whatsapp" name="whatsapp" placeholder="+52XXXXXXXXXX" required>
+                </div>
+              </div>
+
+              <!-- Descripción -->
+              <div class="row g-3 mt-1">
+                <div class="col-md-6">
+                  <label for="descriptionES" class="form-label" data-es="Descripción en Español" data-en="Description in Spanish">Descripción en Español</label>
+                  <textarea class="form-control" id="descriptionES" name="descriptionES" rows="3" required></textarea>
+                </div>
+                <div class="col-md-6">
+                  <label for="descriptionEN" class="form-label" data-es="Descripción en Inglés" data-en="Description in English">Descripción en Inglés</label>
+                  <textarea class="form-control" id="descriptionEN" name="descriptionEN" rows="3" required></textarea>
+                </div>
+              </div>
+
+              <!-- Precio -->
+              <div class="mt-3">
+                <label class="form-label" data-es="Rango de precios" data-en="Price range">Rango de precios</label>
+                <div class="d-flex gap-2 flex-wrap">
+                  <input type="radio" class="btn-check" name="price" id="price1" value="$" required>
+                  <label class="btn btn-outline-secondary" for="price1" data-es="$ Económico" data-en="$ Budget">$ Económico</label>
+
+                  <input type="radio" class="btn-check" name="price" id="price2" value="$$">
+                  <label class="btn btn-outline-secondary" for="price2" data-es="$$ Moderado" data-en="$$ Moderate">$$ Moderado</label>
+
+                  <input type="radio" class="btn-check" name="price" id="price3" value="$$$">
+                  <label class="btn btn-outline-secondary" for="price3" data-es="$$$ Premium" data-en="$$$ Premium">$$$ Premium</label>
+                </div>
+              </div>
+
+              <!-- Ubicación -->
+              <div class="mt-3">
+                <label class="form-label" data-es="Ubicación" data-en="Location">Ubicación</label>
+                <div class="input-group">
+                  <input type="text" class="form-control" id="latitude" name="latitude" placeholder="Lat" required>
+                  <input type="text" class="form-control" id="longitude" name="longitude" placeholder="Lon" required>
+                  <button class="btn btn-outline-secondary" type="button" id="detectLocation" name="detectLocation" data-es="Detectar" data-en="Detect">Detectar</button>
+                </div>
+                <small class="text-muted" data-es="Requiere HTTPS y permiso de ubicación." data-en="Requires HTTPS and location permission.">Requiere HTTPS y permiso de ubicación.</small>
+              </div>
+
+              <!-- Imágenes -->
+              <div class="mt-3">
+                <label for="images" class="form-label" data-es="Fotos del negocio (puedes subir varias)" data-en="Business photos (you can upload multiple)">Fotos del negocio (puedes subir varias)</label>
+                <input class="form-control" type="file" id="images" name="images" accept="image/*" multiple>
+              </div>
+
+              <!-- Email y términos -->
+              <div class="row g-3 mt-1">
+                <div class="col-md-6">
+                  <label for="email" class="form-label" data-es="Correo de contacto" data-en="Contact email">Correo de contacto</label>
+                  <input type="email" class="form-control" id="email" name="email" required>
+                </div>
+                <div class="col-md-6 d-flex align-items-end">
+                  <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="terms" name="terms" required>
+                    <label class="form-check-label" for="terms" data-es="Acepto que me contacten para completar mi registro" data-en="I agree to be contacted to complete my registration">Acepto que me contacten para completar mi registro</label>
+                  </div>
+                </div>
+              </div>
+
+              <input type="hidden" name="_subject" value="Nuevo registro de negocio">
+
+              <div class="d-grid mt-4">
+                <button type="submit" class="btn btn-primary btn-lg" data-es="Enviar" data-en="Submit">Enviar</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="py-4 bg-white border-top">
+    <div class="container text-center">
+      <p class="mb-0 small text-muted">© Puerto Peñasco Directory</p>
+      <a href="index.html" class="btn btn-outline-primary btn-sm mt-2" data-es="Inicio" data-en="Home">Inicio</a>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Orden importa: primero global, luego específico -->
+  <script src="main/script.js?v=1"></script>
+  <script src="main/register.js?v=1"></script>
+</body>
+</html>
 
