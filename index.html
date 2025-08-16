@@ -1,97 +1,115 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Puerto Peñasco Directory</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Font Awesome -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Puerto Peñasco Directory</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Language Switcher -->
-    <div class="d-flex justify-content-end p-2">
-        <button class="btn btn-sm btn-outline-primary me-2" id="langES">ES</button>
-        <button class="btn btn-sm btn-outline-primary" id="langEN">EN</button>
+  <!-- Barra de idiomas -->
+  <div class="d-flex justify-content-end p-2">
+    <button class="btn btn-sm btn-outline-primary me-2" id="langES">ES</button>
+    <button class="btn btn-sm btn-outline-primary" id="langEN">EN</button>
+  </div>
+
+  <!-- Encabezado -->
+  <header class="bg-primary text-white text-center py-4">
+    <h1 data-es="Directorio de Puerto Peñasco" data-en="Puerto Peñasco Directory">Directorio de Puerto Peñasco</h1>
+    <p data-es="Explora negocios locales, servicios y atracciones" data-en="Explore local businesses, services and attractions">
+      Explora negocios locales, servicios y atracciones
+    </p>
+    <a href="register.html" class="btn btn-light mt-2">
+      <i class="fa fa-plus-circle"></i> 
+      <span data-es="Registrar mi negocio" data-en="Register my business">Registrar mi negocio</span>
+    </a>
+  </header>
+
+  <!-- Categorías -->
+  <div class="container my-4">
+    <h2 class="text-center mb-4" data-es="Categorías Populares" data-en="Popular Categories">Categorías Populares</h2>
+    <div class="row g-3">
+      <div class="col-6 col-md-3 text-center">
+        <i class="fa fa-utensils fa-2x text-primary"></i>
+        <p data-es="Restaurantes" data-en="Restaurants">Restaurantes</p>
+      </div>
+      <div class="col-6 col-md-3 text-center">
+        <i class="fa fa-hotel fa-2x text-primary"></i>
+        <p data-es="Hoteles" data-en="Hotels">Hoteles</p>
+      </div>
+      <div class="col-6 col-md-3 text-center">
+        <i class="fa fa-coffee fa-2x text-primary"></i>
+        <p data-es="Cafeterías" data-en="Cafés">Cafeterías</p>
+      </div>
+      <div class="col-6 col-md-3 text-center">
+        <i class="fa fa-money-bill-wave fa-2x text-primary"></i>
+        <p data-es="Casas de cambio" data-en="Exchange Houses">Casas de cambio</p>
+      </div>
     </div>
-    <!-- Header -->
-    <header class="bg-primary text-white text-center py-3">
-        <h1 data-es="Directorio de Puerto Peñasco" data-en="Puerto Peñasco Directory">Directorio de Puerto Peñasco</h1>
-        <p data-es="Descubre los mejores negocios locales" data-en="Discover the best local businesses">Descubre los mejores negocios locales</p>
-    </header>
+  </div>
 
-    <!-- Navigation & Search -->
-    <nav class="navbar navbar-expand-md navbar-light bg-light sticky-top shadow-sm">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">PP Directory</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0" id="categoryMenu">
-                    <li class="nav-item"><a class="nav-link active" href="#" data-category="all" data-es="Todos" data-en="All">Todos</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#" data-category="cafeteria" data-es="Cafeterías" data-en="Cafes">Cafeterías</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#" data-category="restaurant" data-es="Restaurantes" data-en="Restaurants">Restaurantes</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#" data-category="hotel" data-es="Hoteles" data-en="Hotels">Hoteles</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#" data-category="tour" data-es="Tours" data-en="Tours">Tours</a></li>
-                </ul>
-               
-
- 
-   
-  
-  
-
-                     
-                
-                <button class="btn btn-outline-secondary ms-2" id="nearMeBtn" data-es="Cerca de mí" data-en="Near me">
-                    <i class="fa-solid fa-location-crosshairs"></i>
-                </button>
+  <!-- Negocios destacados -->
+  <div class="container my-4">
+    <h2 class="text-center mb-4" data-es="Negocios Destacados" data-en="Featured Businesses">Negocios Destacados</h2>
+    <div class="row g-4">
+      <!-- Ejemplo de tarjeta de negocio -->
+      <div class="col-md-6 col-lg-4">
+        <div class="card shadow-sm h-100">
+          <img src="https://via.placeholder.com/400x250" class="card-img-top" alt="Restaurante ejemplo">
+          <div class="card-body">
+            <h5 class="card-title">Restaurante El Mar</h5>
+            <p class="card-text">Comida fresca del mar en el corazón de Puerto Peñasco.</p>
+            <!-- Contacto directo -->
+            <div class="d-flex justify-content-around my-2">
+              <a href="https://wa.me/5216441234567" target="_blank" class="btn btn-success btn-sm">
+                <i class="fab fa-whatsapp"></i> WhatsApp
+              </a>
+              <a href="tel:+526441234567" class="btn btn-primary btn-sm">
+                <i class="fa fa-phone"></i> Llamar
+              </a>
+              <a href="https://goo.gl/maps/abcd1234" target="_blank" class="btn btn-outline-danger btn-sm">
+                <i class="fa fa-map-marker-alt"></i> Mapa
+              </a>
             </div>
+            <!-- Reseñas -->
+            <div>
+              <span class="text-warning"><i class="fa fa-star"></i></span>
+              <span class="text-warning"><i class="fa fa-star"></i></span>
+              <span class="text-warning"><i class="fa fa-star"></i></span>
+              <span class="text-warning"><i class="fa fa-star"></i></span>
+              <span class="text-secondary"><i class="fa fa-star"></i></span>
+              <small>(45 reseñas)</small>
+            </div>
+          </div>
         </div>
-    </nav>
+      </div>
+      <!-- Copia este bloque para más negocios -->
+    </div>
+  </div>
 
-    <!-- Main Content -->
-    <div class="container-fluid my-4">
-        <!-- Premium zone -->
-        <section id="premiumSection" class="mb-5">
-            <h2 class="section-title" data-es="Negocios Destacados" data-en="Featured Businesses">Negocios Destacados</h2>
-            <div class="row" id="premiumList">
-                <!-- Premium cards will be inserted here by JS -->
-            </div>
-        </section>
+  <!-- Footer -->
+  <footer class="bg-light text-center py-4 mt-4">
+    <p class="mb-0" data-es="© 2025 Puerto Peñasco Directory. Todos los derechos reservados." data-en="© 2025 Puerto Peñasco Directory. All rights reserved.">
+      © 2025 Puerto Peñasco Directory. Todos los derechos reservados.
+    </p>
+  </footer>
 
-        <!-- Promotions -->
-        <section id="promosSection" class="mb-5">
-            <h2 class="section-title" data-es="Promociones Especiales" data-en="Special Promotions">Promociones Especiales</h2>
-            <div class="row" id="promoList"></div>
-        </section>
-
-        <!-- Business Listings -->
-        <section>
-            <h2 class="section-title" data-es="Negocios" data-en="Businesses">Negocios</h2>
-            <div class="row" id="businessList">
-                <!-- Business cards inserted here by JS -->
-            
-        </section>
-
-        <!-- Events Section -->
-        <section class="mt-5">
-            <h2 class="section-title" data-es="Eventos locales" data-en="Local Events">Eventos locales</h2>
-            <div class="row" id="eventsList"></div>
-        </section>
-    
-
-    <!-- Footer -->
-    <footer class="bg-light text-center py-4">
-        <p class="mb-0" data-es="¿Eres propietario de un negocio?" data-en="Are you a business owner?">¿Eres propietario de un negocio?</p>
-        <a href="register.html" class="btn btn-primary ms-2">Registrar tu Negocio</a>
-     <a href="https://wa.me/526381129259" class="btn btn-success ms-2" target="_blank">WhatsApp</a>
-
-    <!-- Bootstrap JS Bundle -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="script.js"></script>
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Script de traducción -->
+  <script>
+    let currentLang = 'es';
+    function applyTranslations() {
+      document.querySelectorAll('[data-es]').forEach(el => {
+        el.textContent = currentLang === 'es' ? el.getAttribute('data-es') : el.getAttribute('data-en');
+      });
+    }
+    document.getElementById('langES').addEventListener('click', () => { currentLang = 'es'; applyTranslations(); });
+    document.getElementById('langEN').addEventListener('click', () => { currentLang = 'en'; applyTranslations(); });
+  </script>
 </body>
 </html>
