@@ -45,8 +45,9 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // Detectar ubicación y rellenar campos
-  document.getElementById('detectLocation').addEventListener('click', () => {
-    if (!navigator.geolocation) {
+  document.getElementById('detectLocation').addEventListener('click', () => 
+    e.preventDefault();
+      if (!navigator.geolocation) {
       alert(currentLang === 'es' ? 'La geolocalización no es compatible.' : 'Geolocation is not supported.');
       return;
     }
