@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
       pos => {
         const { latitude, longitude } = pos.coords;
         document.getElementById('latitude').value = latitude.toFixed(6);
-        document.getElementById('longitude').value = longitude.toFixed(6);
+        document.getElementById('longitude'). value = longitude.toFixed(6);
       },
       err => {
         alert(currentLang === 'es' ? 'No se pudo obtener tu ubicación.' : 'Could not retrieve your location.');
@@ -64,7 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Manejar envío de formulario
   document.getElementById('registerForm').addEventListener('submit', (e) => {
-    e.preventDefault();
+   // e.preventDefault();
     // Recopilar datos del formulario
     const data = {
       name_es: document.getElementById('businessNameES').value.trim(),
