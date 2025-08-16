@@ -2,7 +2,7 @@
 (function () {
   // Configura aquí tus teléfonos
   const PHONE_INTL = '+526381129259';   // <--- cámbialo
-  const WHATS_INTL = '526381129259';   // <--- cámbialo (sin +)
+  const WHATS_INTL = '+526381129259';   // <--- cámbialo (sin +)
 
   // Idioma actual
   let currentLang = document.documentElement.lang || 'es';
