@@ -50,6 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
     e.preventDefault();
   e.stopPropagation();
        alert('click');
+  alert('CALL GPS');
   if (!navigator.geolocation) {
       alert(currentLang === 'es' ? 'La geolocalización no es compatible.' : 'Geolocation is not supported.');
       return;
@@ -62,7 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('longitude'). value = longitude.toFixed(6);
       },
       err => {
-        alert(currentLang === 'es' ? 'No se pudo obtener tu ubicación.' : 'Could not retrieve your location.');
+        alert('Error ' + err.code + ': ' + err.message);
       }
     );
   });
