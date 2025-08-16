@@ -45,6 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // Detectar ubicación y rellenar campos
+  document.getElementById('detectLocation').type = 'button';
   document.getElementById('detectLocation').addEventListener('click', () => 
     e.preventDefault();
        alert('click');
