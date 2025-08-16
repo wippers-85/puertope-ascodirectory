@@ -46,8 +46,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Detectar ubicación y rellenar campos
   document.getElementById('detectLocation').type = 'button';
-  document.getElementById('detectLocation').addEventListener('click', () => 
+  document.getElementById('detectLocation').addEventListener('click', (e) => 
     e.preventDefault();
+  e.stopPropagation();
        alert('click');
   if (!navigator.geolocation) {
       alert(currentLang === 'es' ? 'La geolocalización no es compatible.' : 'Geolocation is not supported.');
@@ -55,6 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     navigator.geolocation.getCurrentPosition(
       pos => {
+        alert('OK GPS');
         const { latitude, longitude } = pos.coords;
         document.getElementById('latitude').value = latitude.toFixed(6);
         document.getElementById('longitude'). value = longitude.toFixed(6);
