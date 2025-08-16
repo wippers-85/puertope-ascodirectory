@@ -1,4 +1,4 @@
-/*
+alert('JS CARGÓ');
  * Script para la página de registro de negocios en el directorio de Puerto Peñasco.
  * Maneja la traducción bilingüe de la interfaz, la detección de ubicación mediante geolocalización
  * y la captura de datos del formulario. En esta versión no se envía información a un servidor;
