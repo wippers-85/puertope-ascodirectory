@@ -1,4 +1,4 @@
-alert('JS CARGÓ');
+/*
  * Script para la página de registro de negocios en el directorio de Puerto Peñasco.
  * Maneja la traducción bilingüe de la interfaz, la detección de ubicación mediante geolocalización
  * y la captura de datos del formulario. En esta versión no se envía información a un servidor;
@@ -46,9 +46,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Detectar ubicación y rellenar campos
   document.getElementById('detectLocation').type = 'button';
-  document.getElementById('detectLocation').addEventListener('click', (e) => 
+  document.getElementById('detectLocation').addEventListener('click', (e) => {
     e.preventDefault();
-  e.stopPropagation();
+ // e.stopPropagation();
        alert('click');
   alert('CALL GPS');
   if (!navigator.geolocation) {
@@ -60,8 +60,8 @@ document.addEventListener('DOMContentLoaded', () => {
         alert('OK GPS');
         const { latitude, longitude } = pos.coords;
         document.getElementById('latitude').value = latitude.toFixed(6);
-        document.getElementById('longitude'). value = longitude.toFixed(6);
-      },
+        document.getElementById('longitude').value = longitude.toFixed(6);
+         },
       err => {
         alert('Error ' + err.code + ': ' + err.message);
       }
@@ -99,11 +99,11 @@ document.addEventListener('DOMContentLoaded', () => {
        // : 'Thank you for registering. We will contact you soon to complete your listing.'
     );
     // Reiniciar formulario
-   // e.target.reset();
+   // e.target.reset(); a
     //document.getElementById('latitude').value = '';
     e.target.submit();     //document.getElementById('longitude').value = '';
   });
 
   // Inicializar traducciones
-  applyTranslations();
+ applyTranslations();
 });
