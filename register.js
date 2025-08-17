@@ -36,14 +36,41 @@ document.addEventListener('DOMContentLoaded', () => {
     applyTranslations();
   });
 
-  // Detectar ubicación
-  document.getElementById('detectLocation').addEventListener('click', () => {
-    if (!navigator.geolocation) {
+// Detectar ubicación y rellenar campos
+const btnDetect = document.getElementById('detectLocation');
+if (btnDetect) {
+  btnDetect.type = 'button';
+  btnDetect.addEventListener('click', (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    alert('CLICK detect');
+
+    if (!('geolocation' in navigator)) {
       alert(currentLang === 'es'
-        ? 'La geolocalización no es compatible con este navegador.'
-        : 'Geolocation is not supported by this browser.');
+        ? 'La geolocalización no es compatible en este navegador.'
+        : 'Geolocation is not supported in this browser.');
       return;
     }
+
+    navigator.geolocation.getCurrentPosition(
+      (pos) => {
+        const { latitude, longitude } = pos.coords;
+        document.getElementById('latitude').value  = latitude.toFixed(6);
+        document.getElementById('longitude').value = longitude.toFixed(6);
+        alert('OK GPS');
+      },
+      (err) => {
+        const msgES = {1:'Permiso denegado',2:'Posición no disponible',3:'Tiempo de espera agotado'};
+        const msgEN = {1:'Permission denied',2:'Position unavailable',3:'Timeout'};
+        const m = currentLang === 'es' ? msgES[err.code] || err.message
+                                       : msgEN[err.code] || err.message;
+        alert((currentLang === 'es' ? 'Error GPS: ' : 'GPS error: ') + m);
+      },
+      { enableHighAccuracy: true, timeout: 10000, maximumAge: 0 }
+    );
+  });
+}
+ 
 
     navigator.geolocation.getCurrentPosition(
       pos => {
