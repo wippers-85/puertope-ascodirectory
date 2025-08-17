@@ -36,57 +36,38 @@ document.addEventListener('DOMContentLoaded', () => {
     applyTranslations();
   });
 
-// Detectar ubicación y rellenar campos
+ // Detectar ubicación y rellenar lat/lon
 const btnDetect = document.getElementById('detectLocation');
 if (btnDetect) {
-  btnDetect.type = 'button';
-  btnDetect.addEventListener('click', (e) => {
-    e.preventDefault();
-    e.stopPropagation();
-    alert('CLICK detect');
-
+  btnDetect.addEventListener('click', () => {
+    // 1) Validar soporte
     if (!('geolocation' in navigator)) {
-      alert(currentLang === 'es'
-        ? 'La geolocalización no es compatible en este navegador.'
-        : 'Geolocation is not supported in this browser.');
+      alert('La geolocalización no es compatible en este navegador.');
       return;
     }
 
+    // 2) Pedir posición
     navigator.geolocation.getCurrentPosition(
       (pos) => {
         const { latitude, longitude } = pos.coords;
         document.getElementById('latitude').value  = latitude.toFixed(6);
         document.getElementById('longitude').value = longitude.toFixed(6);
-        alert('OK GPS');
+        // opcional: alert('OK GPS');
       },
       (err) => {
-        const msgES = {1:'Permiso denegado',2:'Posición no disponible',3:'Tiempo de espera agotado'};
-        const msgEN = {1:'Permission denied',2:'Position unavailable',3:'Timeout'};
-        const m = currentLang === 'es' ? msgES[err.code] || err.message
-                                       : msgEN[err.code] || err.message;
-        alert((currentLang === 'es' ? 'Error GPS: ' : 'GPS error: ') + m);
+        let msg = 'Error GPS: ';
+        if (err.code === 1) msg += 'Permiso denegado.';
+        else if (err.code === 2) msg += 'Posición no disponible.';
+        else if (err.code === 3) msg += 'Tiempo de espera agotado.';
+        else msg += err.message;
+        alert(msg);
       },
       { enableHighAccuracy: true, timeout: 10000, maximumAge: 0 }
     );
   });
 }
- 
 
-    navigator.geolocation.getCurrentPosition(
-      pos => {
-        const { latitude, longitude } = pos.coords;
-        document.getElementById('latitude').value = latitude.toFixed(6);
-        document.getElementById('longitude').value = longitude.toFixed(6);
-      },
-      err => {
-        alert(
-          currentLang === 'es'
-            ? `Error al obtener ubicación: ${err.message}`
-            : `Error getting location: ${err.message}`
-        );
-      }
-    );
-  });
+
 
   // Manejar envío de formulario
   document.getElementById('registerForm').addEventListener('submit', (e) => {
