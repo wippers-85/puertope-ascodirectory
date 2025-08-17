@@ -10,16 +10,24 @@
 </head>
 <body class="bg-light">
 
-  <!-- Topbar -->
-  <nav class="navbar navbar-light bg-white border-bottom">
-    <div class="container d-flex justify-content-between align-items-center">
-      <a class="navbar-brand fw-semibold" href="index.html">Puerto Peñasco Directory</a>
-      <div class="d-flex gap-2">
-        <button class="btn btn-sm btn-outline-primary" id="langES" type="button">ES</button>
-        <button class="btn btn-sm btn-outline-primary" id="langEN" type="button">EN</button>
-      </div>
-    </div>
-  </nav>
+  <body>
+  <!-- topbar con botones de idioma -->
+  <div class="d-flex justify-content-end p-2 bg-light">
+    <button class="btn btn-sm btn-outline-primary me-2" id="langES" type="button">ES</button>
+    <button class="btn btn-sm btn-outline-primary" id="langEN" type="button">EN</button>
+  </div>
+
+  <!-- header -->
+  <header class="bg-primary text-white text-center py-3">
+    <h1 data-es="Registrar tu negocio" data-en="Register your business">
+      Registrar tu negocio
+    </h1>
+    <p data-es="Completa el formulario para aparecer en nuestro directorio"
+       data-en="Complete the form to appear in our directory">
+       Completa el formulario para aparecer en nuestro directorio
+    </p>
+  </header>
+
 
   <!-- Hero -->
   <header class="py-5 text-center bg-primary text-white">
