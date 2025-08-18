@@ -10,15 +10,30 @@
   <!-- Font Awesome -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
 
+  <style>
+  /* Hero con imagen y overlay */
   .hero {
-  position: relative;
-  height: 52vh;
-  min-height: 380px;
-  background: 
-    linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)),
-    url('./peñasco.jpg') no-repeat center center;
-  background-size: cover;
-}
+    position: relative;
+    height: 52vh;
+    min-height: 380px;
+    background: 
+      linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)),
+      url('./peñasco.jpg') no-repeat center center;
+    background-size: cover;
+  }
+
+  .hero::after {
+    content:"";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(0,0,0,0.55), rgba(0,0,0,0.35));
+  }
+
+  .hero .hero-inner {
+    position: relative;
+    z-index: 2;
+  }
+
 
     .hero::after { content:""; position:absolute; inset:0; background:linear-gradient(180deg,rgba(0,0,0,.55),rgba(0,0,0,.35)); }
     .hero .hero-inner { position:relative; z-index:2; }
