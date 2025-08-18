@@ -3,144 +3,257 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Puerto Peñasco Directory — Inicio</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" />
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
-  <link href="style.css" rel="stylesheet" />
+  <title>Puerto Peñasco Directory — Remodelado</title>
+
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+  <style>
+    /* Hero con imagen y overlay */
+    .hero {
+      position: relative;
+      height: 52vh;
+      min-height: 380px;
+      background: url('https://images.unsplash.com/photo-1528137871618-79d2761e3fd5?q=80&w=1600&auto=format&fit=crop') center/cover no-repeat;
+    }
+    .hero::after { content:""; position:absolute; inset:0; background:linear-gradient(180deg,rgba(0,0,0,.55),rgba(0,0,0,.35)); }
+    .hero .hero-inner { position:relative; z-index:2; }
+
+    .card.business img { height:180px; object-fit:cover; }
+    .category-tile { transition: transform .15s ease, box-shadow .15s ease; }
+    .category-tile:hover { transform: translateY(-2px); box-shadow: 0 10px 24px rgba(0,0,0,.08); }
+
+    .floating-wa{
+      position: fixed; right: 20px; bottom: 20px; width: 56px; height: 56px;
+      border-radius: 50%; display: grid; place-items: center;
+      background: #25D366; color: #fff; box-shadow: 0 10px 24px rgba(0,0,0,.18);
+      text-decoration: none;
+    }
+  </style>
 </head>
 <body class="bg-light">
 
-  <body>
-  <!-- topbar con botones de idioma -->
-  <div class="d-flex justify-content-end p-2 bg-light">
-    <button class="btn btn-sm btn-outline-primary me-2" id="langES" type="button">ES</button>
-    <button class="btn btn-sm btn-outline-primary" id="langEN" type="button">EN</button>
-  </div>
-
-  <!-- header -->
-  <header class="bg-primary text-white text-center py-3">
-    <h1 data-es="Registrar tu negocio" data-en="Register your business">
-      Registrar tu negocio
-    </h1>
-    <p data-es="Completa el formulario para aparecer en nuestro directorio"
-       data-en="Complete the form to appear in our directory">
-       Completa el formulario para aparecer en nuestro directorio
-    </p>
-  </header>
-
+  <!-- Topbar -->
+  <nav class="navbar navbar-light bg-white border-bottom sticky-top">
+    <div class="container d-flex justify-content-between align-items-center">
+      <a class="navbar-brand fw-semibold" href="#">Puerto Peñasco Directory</a>
+      <div class="d-none d-md-flex align-items-center gap-2">
+        <a class="nav-link" href="#categorias">Categorías</a>
+        <a class="nav-link" href="#destacados">Destacados</a>
+        <a class="nav-link" href="#mapa">Mapa</a>
+        <a class="btn btn-success btn-sm" href="#registro"><i class="fa-regular fa-pen-to-square me-1"></i>Registrar negocio</a>
+      </div>
+    </div>
+  </nav>
 
   <!-- Hero -->
-  <header class="py-5 text-center bg-primary text-white">
-    <div class="container">
-      <h1 class="display-6 mb-2" data-es="Directorio de negocios" data-en="Business Directory">Directorio de negocios</h1>
-      <p class="mb-0" data-es="Explora y registra tu negocio en minutos" data-en="Explore and list your business in minutes">Explora y registra tu negocio en minutos</p>
-      <a href="register.html" class="btn btn-light mt-3">
-        <i class="fa fa-plus-circle me-1"></i>
-        <span data-es="Registrar negocio" data-en="Register business">Registrar negocio</span>
-      </a>
+  <header class="hero d-flex align-items-center text-white">
+    <div class="container hero-inner">
+      <div class="col-12 col-lg-8">
+        <h1 class="display-5 fw-bold">Encuentra los mejores negocios de Puerto Peñasco</h1>
+        <p class="lead mb-4">Restaurantes, hoteles, tours, cafeterías y más — todo en un solo lugar.</p>
+        <!-- Buscador -->
+        <form class="bg-white rounded-3 p-2 d-flex gap-2">
+          <input class="form-control form-control-lg" placeholder="¿Qué buscas? (ej. mariscos, hotel, café)">
+          <button class="btn btn-dark btn-lg" type="button"><i class="fa-solid fa-magnifying-glass me-1"></i>Buscar</button>
+        </form>
+        <div class="mt-3">
+          <a class="btn btn-success btn-sm" href="#registro">Registrar negocio</a>
+          <span class="opacity-75 ms-2">o explora por categorías</span>
+        </div>
+      </div>
     </div>
   </header>
 
   <!-- Categorías -->
-  <main class="container my-5">
-    <h2 class="text-center mb-4" data-es="Categorías populares" data-en="Popular categories">Categorías populares</h2>
-    <div class="row g-3">
-      <div class="col-6 col-md-3">
-        <a href="#" class="cat-tile d-block text-center p-3">
-          <div class="fs-2">🍽️</div>
-          <div class="fw-semibold mt-2" data-es="Restaurantes" data-en="Restaurants">Restaurantes</div>
-        </a>
+  <section id="categorias" class="py-5">
+    <div class="container">
+      <div class="d-flex justify-content-between align-items-end mb-3">
+        <h2 class="h4 fw-semibold m-0">Categorías populares</h2>
+        <a class="small text-muted" href="#">Ver todas →</a>
       </div>
-      <div class="col-6 col-md-3">
-        <a href="#" class="cat-tile d-block text-center p-3">
-          <div class="fs-2">🏨</div>
-          <div class="fw-semibold mt-2" data-es="Hoteles" data-en="Hotels">Hoteles</div>
-        </a>
-      </div>
-      <div class="col-6 col-md-3">
-        <a href="#" class="cat-tile d-block text-center p-3">
-          <div class="fs-2">☕</div>
-          <div class="fw-semibold mt-2" data-es="Cafeterías" data-en="Cafés">Cafeterías</div>
-        </a>
-      </div>
-      <div class="col-6 col-md-3">
-        <a href="#" class="cat-tile d-block text-center p-3">
-          <div class="fs-2">💱</div>
-          <div class="fw-semibold mt-2" data-es="Casas de cambio" data-en="Currency exchange">Casas de cambio</div>
-        </a>
+      <div class="row g-3">
+        <div class="col-6 col-md-3">
+          <a href="#" class="text-decoration-none">
+            <div class="category-tile bg-white border rounded-3 p-3 h-100">
+              <div class="fs-3">🍽️</div>
+              <div class="fw-medium mt-1 text-dark">Restaurantes</div>
+              <div class="text-muted small">Explorar</div>
+            </div>
+          </a>
+        </div>
+        <div class="col-6 col-md-3">
+          <a href="#" class="text-decoration-none">
+            <div class="category-tile bg-white border rounded-3 p-3 h-100">
+              <div class="fs-3">🏨</div>
+              <div class="fw-medium mt-1 text-dark">Hoteles</div>
+              <div class="text-muted small">Explorar</div>
+            </div>
+          </a>
+        </div>
+        <div class="col-6 col-md-3">
+          <a href="#" class="text-decoration-none">
+            <div class="category-tile bg-white border rounded-3 p-3 h-100">
+              <div class="fs-3">☕</div>
+              <div class="fw-medium mt-1 text-dark">Cafeterías</div>
+              <div class="text-muted small">Explorar</div>
+            </div>
+          </a>
+        </div>
+        <div class="col-6 col-md-3">
+          <a href="#" class="text-decoration-none">
+            <div class="category-tile bg-white border rounded-3 p-3 h-100">
+              <div class="fs-3">💱</div>
+              <div class="fw-medium mt-1 text-dark">Casas de cambio</div>
+              <div class="text-muted small">Explorar</div>
+            </div>
+          </a>
+        </div>
       </div>
     </div>
+  </section>
 
-    <!-- Destacados (demo) -->
-    <h2 class="text-center my-4" data-es="Negocios destacados" data-en="Featured businesses">Negocios destacados</h2>
-    <div class="row g-4">
-      <div class="col-md-6 col-lg-4">
-        <div class="card h-100 shadow-sm">
-          <img src="https://via.placeholder.com/600x350" class="card-img-top" alt="Ejemplo negocio">
-          <div class="card-body">
-            <h5 class="card-title">Restaurante El Mar</h5>
-            <p class="card-text">Comida del mar, vista a la playa.</p>
-            <!-- Contactos -->
-            <div class="d-flex justify-content-between my-2">
-              <a id="demoWhats" href="#" target="_blank" class="btn btn-success btn-sm">
-                <i class="fab fa-whatsapp"></i> WhatsApp
-              </a>
-              <a id="demoCall" href="#" class="btn btn-primary btn-sm">
-                <i class="fa fa-phone"></i> <span data-es="Llamar" data-en="Call">Llamar</span>
-              </a>
-              <a href="https://maps.google.com/?q=Puerto+Peñasco" target="_blank" class="btn btn-outline-danger btn-sm">
-                <i class="fa fa-map-marker-alt"></i> Map
-              </a>
-            </div>
-            <!-- Reseñas -->
-            <div class="rating">
-              <i class="fa fa-star text-warning"></i>
-              <i class="fa fa-star text-warning"></i>
-              <i class="fa fa-star text-warning"></i>
-              <i class="fa fa-star text-warning"></i>
-              <i class="fa fa-star text-secondary"></i>
-              <small class="ms-1">(45)</small>
+  <!-- Destacados -->
+  <section id="destacados" class="py-5 bg-white border-top border-bottom">
+    <div class="container">
+      <h2 class="h4 fw-semibold mb-3">Negocios destacados</h2>
+      <div class="row g-4">
+
+        <!-- Restaurante -->
+        <div class="col-sm-6 col-lg-4">
+          <div class="card business shadow-sm border-0">
+            <img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092?q=80&w=1200&auto=format&fit=crop" class="card-img-top" alt="Restaurante Mar Azul">
+            <div class="card-body">
+              <span class="badge text-bg-light">Restaurante</span>
+              <h3 class="h6 mt-2 mb-1">Restaurante Mar Azul</h3>
+              <p class="text-muted small mb-3">Especialidad en mariscos frescos junto al mar.</p>
+              <div class="d-flex gap-2">
+                <a class="btn btn-success btn-sm" href="https://wa.me/526381129259?text=Hola%20vengo%20del%20directorio"><i class="fa-brands fa-whatsapp me-1"></i>WhatsApp</a>
+                <a class="btn btn-outline-secondary btn-sm" href="tel:+526381129259"><i class="fa-solid fa-phone me-1"></i>Llamar</a>
+                <a class="btn btn-outline-secondary btn-sm" href="https://maps.google.com/?q=31.316,-113.536" target="_blank"><i class="fa-solid fa-location-dot me-1"></i>Mapa</a>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <!-- Duplica la tarjeta para más negocios -->
-    </div>
 
-    <!-- Mapa -->
-    <h2 class="text-center my-4" data-es="Mapa" data-en="Map">Mapa</h2>
-    <div class="ratio ratio-16x9 rounded shadow-sm overflow-hidden">
-      <iframe
-        src="https://www.google.com/maps?q=Puerto%20Pe%C3%B1asco&z=13&output=embed"
-        allowfullscreen="" loading="lazy"></iframe>
+        <!-- Hotel -->
+        <div class="col-sm-6 col-lg-4">
+          <div class="card business shadow-sm border-0">
+            <img src="https://images.unsplash.com/photo-1501117716987-c8e1ecb210d5?q=80&w=1200&auto=format&fit=crop" class="card-img-top" alt="Hotel Sol Dorado">
+            <div class="card-body">
+              <span class="badge text-bg-light">Hotel</span>
+              <h3 class="h6 mt-2 mb-1">Hotel Sol Dorado</h3>
+              <p class="text-muted small mb-3">Alberca, vista al mar y desayuno incluido.</p>
+              <div class="d-flex gap-2">
+                <a class="btn btn-success btn-sm" href="https://wa.me/526381129259?text=Hola%20vengo%20del%20directorio"><i class="fa-brands fa-whatsapp me-1"></i>WhatsApp</a>
+                <a class="btn btn-outline-secondary btn-sm" href="tel:+526381129259"><i class="fa-solid fa-phone me-1"></i>Llamar</a>
+                <a class="btn btn-outline-secondary btn-sm" href="https://maps.google.com/?q=31.316,-113.536" target="_blank"><i class="fa-solid fa-location-dot me-1"></i>Mapa</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Cafetería -->
+        <div class="col-sm-6 col-lg-4">
+          <div class="card business shadow-sm border-0">
+            <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?q=80&w=1200&auto=format&fit=crop" class="card-img-top" alt="Café Aroma">
+            <div class="card-body">
+              <span class="badge text-bg-light">Cafetería</span>
+              <h3 class="h6 mt-2 mb-1">Café Aroma</h3>
+              <p class="text-muted small mb-3">Café artesanal y repostería casera.</p>
+              <div class="d-flex gap-2">
+                <a class="btn btn-success btn-sm" href="https://wa.me/526381129259?text=Hola%20vengo%20del%20directorio"><i class="fa-brands fa-whatsapp me-1"></i>WhatsApp</a>
+                <a class="btn btn-outline-secondary btn-sm" href="tel:+526381129259"><i class="fa-solid fa-phone me-1"></i>Llamar</a>
+                <a class="btn btn-outline-secondary btn-sm" href="https://maps.google.com/?q=31.316,-113.536" target="_blank"><i class="fa-solid fa-location-dot me-1"></i>Mapa</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Casa de cambio -->
+        <div class="col-sm-6 col-lg-4">
+          <div class="card business shadow-sm border-0">
+            <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a9f19a4?q=80&w=1200&auto=format&fit=crop" class="card-img-top" alt="Casa de Cambio La Frontera">
+            <div class="card-body">
+              <span class="badge text-bg-light">Casa de cambio</span>
+              <h3 class="h6 mt-2 mb-1">Casa de Cambio La Frontera</h3>
+              <p class="text-muted small mb-3">Cambio de divisas con tasas competitivas.</p>
+              <div class="d-flex gap-2">
+                <a class="btn btn-success btn-sm" href="https://wa.me/526381129259?text=Hola%20vengo%20del%20directorio"><i class="fa-brands fa-whatsapp me-1"></i>WhatsApp</a>
+                <a class="btn btn-outline-secondary btn-sm" href="tel:+526381129259"><i class="fa-solid fa-phone me-1"></i>Llamar</a>
+                <a class="btn btn-outline-secondary btn-sm" href="https://maps.google.com/?q=31.316,-113.536" target="_blank"><i class="fa-solid fa-location-dot me-1"></i>Mapa</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- row -->
     </div>
-  </main>
+  </section>
+
+  <!-- (Opcional) Formulario de registro -->
+  <section id="registro" class="py-5">
+    <div class="container">
+      <h2 class="h5 fw-semibold mb-3">Registrar negocio</h2>
+      <!-- AQUÍ VA TU FORMULARIO DE REGISTRO (con detección de lat/long) -->
+      <!-- Pega aquí el form que ya tienes funcionando -->
+    </div>
+  </section>
+
+  <!-- Mapa compacto -->
+  <section id="mapa" class="py-5">
+    <div class="container">
+      <div class="d-flex justify-content-between align-items-end mb-2">
+        <h2 class="h5 fw-semibold m-0">Mapa</h2>
+        <span class="small text-muted">Compacto (menos estorbo, más utilidad)</span>
+      </div>
+      <div class="rounded-4 overflow-hidden border bg-white shadow-sm">
+        <iframe
+          title="Mapa Puerto Peñasco"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3348.9801730461476!2d-113.532!3d31.318!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x86d1fd3a7c8edb9f%3A0x6a8efc3a0b1a06e0!2sPuerto%20Pe%C3%B1asco%2C%20Son.!5e0!3m2!1ses-419!2smx!4v1700000000000"
+          width="100%" height="340" style="border:0;" loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+  </section>
 
   <!-- Footer -->
-  <footer class="py-4 bg-white border-top">
-    <div class="container text-center">
-      <p class="mb-2 small text-muted">© Puerto Peñasco Directory</p>
-      <div class="d-flex gap-2 justify-content-center">
-        <a href="register.html" class="btn btn-outline-primary btn-sm" data-es="Registrar negocio" data-en="Register business">Registrar negocio</a>
-        <a href="#" class="btn btn-outline-secondary btn-sm" data-es="Contacto" data-en="Contact">Contacto</a>
+  <footer class="bg-dark text-light pt-5 pb-3">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-md">
+          <div class="fw-semibold">Puerto Peñasco Directory</div>
+          <p class="text-secondary small mt-2">Directorio turístico y comercial de Puerto Peñasco, Sonora.</p>
+        </div>
+        <div class="col-md small">
+          <div class="fw-medium mb-2">Enlaces</div>
+          <ul class="list-unstyled text-secondary">
+            <li><a href="#registro" class="link-light link-underline-opacity-0 link-underline-opacity-50-hover">Registrar negocio</a></li>
+            <li><a href="#" class="link-light link-underline-opacity-0 link-underline-opacity-50-hover">Contacto</a></li>
+            <li><a href="#" class="link-light link-underline-opacity-0 link-underline-opacity-50-hover">Políticas</a></li>
+          </ul>
+        </div>
+        <div class="col-md small">
+          <div class="fw-medium mb-2">Soporte</div>
+          <p class="text-secondary mb-0">WhatsApp: <a href="https://wa.me/526381129259" class="link-light">+52 638 112 9259</a></p>
+        </div>
+      </div>
+      <div class="border-top border-secondary-subtle mt-4 pt-3 text-secondary small text-center">
+        © <span id="y"></span> Puerto Peñasco Directory
       </div>
     </div>
   </footer>
 
-<!-- Botones flotantes -->
-<a href="https://wa.me/526381129259" target="_blank" rel="noopener"
-   class="whatsapp-float" aria-label="WhatsApp">
-   <i class="fab fa-whatsapp"></i>
-</a>
+  <!-- Botón flotante WhatsApp -->
+  <a class="floating-wa" href="https://wa.me/526381129259?text=Hola%20vengo%20del%20directorio" aria-label="WhatsApp">
+    <i class="fa-brands fa-whatsapp fs-4"></i>
+  </a>
 
-<a href="tel:+526381129259" class="call-float" aria-label="Llamar">
-   <i class="fa fa-phone"></i>
-</a>
-<!-- 1: Bootstrap Bundle -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
-
-<!-- 2: Script principal con traducciones -->
-<script src="script.js?v=3"></script>
-
-  </body>
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
 </html>
