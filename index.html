@@ -11,42 +11,35 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
 
   <style>
-  /* Hero con imagen y overlay */
-  .hero {
-    position: relative;
-    height: 52vh;
-    min-height: 380px;
-    background: 
-      linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)),
-      url('./peñasco.jpg') no-repeat center center;
-    background-size: cover;
-  }
+    /* HERO */
+    .hero {
+      position: relative;
+      height: 60vh;
+      min-height: 400px;
+      background: url('./peñasco.jpg') no-repeat top center;
+      background-size: cover;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      padding-top: 60px;
+      color: #fff;
+    }
+    .hero .hero-inner { position: relative; z-index: 2; }
+    /* Legibilidad sin oscurecer la foto */
+    .hero h1, .hero p { text-shadow: 0 2px 4px rgba(0,0,0,0.25); }
 
-  .hero::after {
-    content:"";
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(180deg, rgba(0,0,0,0.55), rgba(0,0,0,0.35));
-  }
-
-  .hero .hero-inner {
-    position: relative;
-    z-index: 2;
-  }
-
-
-    .hero::after { content:""; position:absolute; inset:0; background:linear-gradient(180deg,rgba(0,0,0,.55),rgba(0,0,0,.35)); }
-    .hero .hero-inner { position:relative; z-index:2; }
-
+    /* Cards / tiles */
     .card.business img { height:180px; object-fit:cover; }
     .category-tile { transition: transform .15s ease, box-shadow .15s ease; }
     .category-tile:hover { transform: translateY(-2px); box-shadow: 0 10px 24px rgba(0,0,0,.08); }
 
+    /* Botón flotante WhatsApp */
     .floating-wa{
       position: fixed; right: 20px; bottom: 20px; width: 56px; height: 56px;
       border-radius: 50%; display: grid; place-items: center;
       background: #25D366; color: #fff; box-shadow: 0 10px 24px rgba(0,0,0,.18);
       text-decoration: none;
+      z-index: 50;
     }
   </style>
 </head>
@@ -82,7 +75,7 @@
   </nav>
 
   <!-- Hero -->
-  <header class="hero d-flex align-items-center text-white">
+  <header class="hero">
     <div class="container hero-inner">
       <div class="col-12 col-lg-8">
         <h1 class="display-5 fw-bold" data-i18n="heroTitle">Encuentra los mejores negocios de Puerto Peñasco</h1>
@@ -392,7 +385,6 @@
         links: "Enlaces",
         support: "Soporte",
         footerDesc: "Directorio turístico y comercial de Puerto Peñasco, Sonora.",
-        // Categorías
         catRestaurants: "Restaurantes",
         catHotels: "Hoteles",
         catCafes: "Cafeterías",
@@ -405,16 +397,13 @@
         catPharmacySing: "Farmacia",
         catGasSing: "Gasolinera",
         catTourSing: "Tour",
-        // Cards demo
         restDesc: "Especialidad en mariscos frescos junto al mar.",
         hotelDesc: "Alberca, vista al mar y desayuno incluido.",
         cafeDesc: "Café artesanal y repostería casera.",
         exchangeDesc: "Cambio de divisas con tasas competitivas.",
-        // Botones
         whatsapp: "WhatsApp",
         call: "Llamar",
         mapBtn: "Mapa",
-        // Form
         fldName: "Nombre del negocio",
         fldCategory: "Categoría",
         choose: "Selecciona…",
@@ -447,7 +436,6 @@
         links: "Links",
         support: "Support",
         footerDesc: "Tourism & business directory for Puerto Peñasco, Sonora.",
-        // Categories
         catRestaurants: "Restaurants",
         catHotels: "Hotels",
         catCafes: "Coffee Shops",
@@ -460,16 +448,13 @@
         catPharmacySing: "Pharmacy",
         catGasSing: "Gas Station",
         catTourSing: "Tour",
-        // Cards demo
         restDesc: "Fresh seafood specialties by the sea.",
         hotelDesc: "Pool, ocean view and breakfast included.",
         cafeDesc: "Artisanal coffee and homemade pastries.",
         exchangeDesc: "Foreign exchange at competitive rates.",
-        // Buttons
         whatsapp: "WhatsApp",
         call: "Call",
         mapBtn: "Map",
-        // Form
         fldName: "Business name",
         fldCategory: "Category",
         choose: "Choose…",
@@ -487,24 +472,20 @@
     };
 
     function setLanguage(lang) {
-      // Cambia label del botón
       document.getElementById('langLabel').textContent = (lang === 'en') ? 'EN' : 'ES';
       document.documentElement.setAttribute('lang', lang);
 
-      // Cambia textos con data-i18n
       document.querySelectorAll('[data-i18n]').forEach(el => {
         const key = el.getAttribute('data-i18n');
         if (t[lang][key] !== undefined) el.textContent = t[lang][key];
       });
 
-      // Placeholder del buscador
       const searchInput = document.getElementById('searchInput');
       searchInput.placeholder = (lang === 'en')
         ? "What are you looking for? (e.g., seafood, hotel, coffee)"
         : "¿Qué buscas? (ej. mariscos, hotel, café)";
     }
 
-    // Listeners de idioma
     document.querySelectorAll(".lang-btn").forEach(btn => {
       btn.addEventListener("click", e => {
         e.preventDefault();
@@ -512,7 +493,6 @@
       });
     });
 
-    // Idioma por defecto
     setLanguage('es');
 
     // Envío del formulario (demo)
