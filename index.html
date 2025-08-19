@@ -3,143 +3,177 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Directorio Puerto Peñasco — Droidea</title>
-<meta name="description" content="Directorio moderno de negocios en Puerto Peñasco. Búsqueda, categorías y mapa.">
+<title>Directorio Puerto Peñasco — Droidea Metal</title>
+<meta name="description" content="Directorio moderno de negocios en Puerto Peñasco. Búsqueda, categorías, mapa. Estilo androide azul metálico.">
 <style>
   :root{
-    /* Paleta Droidea (androide + neón) */
-    --bg:#0b0d11;
-    --panel:#11151b;
-    --ink:#eaf1fb;
-    --muted:#9aa5b3;
-    --prime:#28d7ff;     /* cian neón */
-    --accent:#6affb5;    /* verde neón */
-    --stroke:rgba(255,255,255,.12);
+    /* Paleta azul–gris metálico */
+    --bg:#0a1015;           /* noche profunda */
+    --steel:#10161d;        /* panel base */
+    --steel-2:#19222c;      /* acero oscuro */
+    --steel-3:#243140;      /* acero medio */
+    --ink:#e8eff7;          /* texto principal */
+    --muted:#9ba7b6;
+    --line:rgba(255,255,255,.14);
+
+    /* Neón / acentos */
+    --neon:#6fd3ff;         /* cian eléctrico */
+    --neon-2:#4aa8ff;       /* azul eléctrico */
+    --glow-c:0 0 18px rgba(111,211,255,.45);
+    --glow-b:0 0 18px rgba(74,168,255,.35);
+
     --glass:rgba(255,255,255,.06);
-    --shadow: 0 10px 30px rgba(0,0,0,.45);
-    --glow-cyan: 0 0 18px rgba(40,215,255,.45);
-    --glow-green:0 0 18px rgba(106,255,181,.35);
+    --shadow:0 10px 32px rgba(0,0,0,.5);
   }
   *{box-sizing:border-box}
   html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial}
-  a{color:var(--prime);text-decoration:none}
+  a{color:var(--neon);text-decoration:none}
 
-  /* Fondo “grid” sutil */
+  /* Fondo con grid + viñeta */
   body:before{
-    content:""; position:fixed; inset:0; z-index:-2;
+    content:"";position:fixed;inset:0;z-index:-2;
     background:
-      radial-gradient(circle at 10% 0%, rgba(40,215,255,.06), transparent 35%),
-      radial-gradient(circle at 90% 100%, rgba(106,255,181,.06), transparent 35%),
+      radial-gradient(1200px 600px at 10% 0%, rgba(79,160,255,.09), transparent 60%),
+      radial-gradient(1000px 500px at 90% 100%, rgba(111,211,255,.08), transparent 60%),
       linear-gradient(transparent 31px, rgba(255,255,255,.03) 32px),
       linear-gradient(90deg, transparent 31px, rgba(255,255,255,.03) 32px);
-    background-size: auto, auto, 32px 32px, 32px 32px;
+    background-size:auto,auto,32px 32px,32px 32px;
     pointer-events:none;
   }
 
   .wrap{max-width:1120px;margin:0 auto;padding:16px}
 
-  /* Topbar minimal */
-  .topbar{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:8px 0}
+  /* ====== Topbar ====== */
+  .topbar{display:flex;align-items:center;justify-content:space-between;padding:10px 0}
   .brand{font-weight:900;letter-spacing:.6px}
   .tag{font-size:12px;color:var(--muted)}
   .lang{display:flex;gap:8px}
   .lang button{
-    padding:8px 10px;border-radius:10px;border:1px solid var(--stroke);
-    background:#0a0d12;color:var(--ink);cursor:pointer;font-weight:700
+    padding:8px 10px;border-radius:10px;border:1px solid var(--line);
+    background:linear-gradient(180deg,#0d141b,#0a1218);
+    color:var(--ink);cursor:pointer;font-weight:700
   }
-  .lang button.active{border-color:var(--prime);box-shadow:inset 0 0 0 1px var(--prime)}
+  .lang button.active{border-color:var(--neon);box-shadow:inset 0 0 0 1px var(--neon), var(--glow-c)}
 
-  /* HERO con imagen y título centrado perfecto */
+  /* ====== HERO metálico ====== */
   .hero{
-    position:relative;height:48vh;min-height:320px;border-top:1px solid var(--stroke);border-bottom:1px solid var(--stroke);
+    position:relative;height:50vh;min-height:340px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
     background:
-      linear-gradient(to bottom, rgba(11,13,17,.15), rgba(11,13,17,.75)),
+      linear-gradient(180deg, rgba(10,16,21,.1), rgba(10,16,21,.75)),
       url('assets/PuertoPenasco.jpg') center/cover no-repeat fixed;
-    display:grid;place-items:center;
+    display:grid;place-items:center;overflow:hidden;
   }
+  /* Overlay metal cepillado horizontal */
+  .hero:after{
+    content:"";position:absolute;inset:0;mix-blend-mode:screen;pointer-events:none;opacity:.35;
+    background:
+      repeating-linear-gradient(0deg, rgba(160,200,230,.08) 0 1px, rgba(0,0,0,0) 2px 4px);
+  }
+  /* Bordes de circuito en esquinas */
+  .hero .corner{
+    position:absolute;width:120px;height:120px;border:1px solid rgba(111,211,255,.35);filter:drop-shadow(var(--glow-c));
+  }
+  .corner.tl{top:16px;left:16px;border-right:none;border-bottom:none}
+  .corner.tr{top:16px;right:16px;border-left:none;border-bottom:none}
+  .corner.bl{bottom:16px;left:16px;border-right:none;border-top:none}
+  .corner.br{bottom:16px;right:16px;border-left:none;border-top:none}
+
   .heroTitle{
-    text-align:center;font-weight:900;line-height:1.05;letter-spacing:.5px;text-transform:uppercase;
-    font-size:clamp(28px,6vw,56px);
-    padding:16px 22px;border-radius:18px;
-    background:linear-gradient(180deg, rgba(0,0,0,.25), rgba(0,0,0,.55));
-    border:1px solid var(--stroke);box-shadow:var(--glow-cyan);
+    position:relative;text-align:center;font-weight:900;line-height:1.05;text-transform:uppercase;
+    font-size:clamp(28px,6vw,58px);padding:16px 24px;border-radius:18px;
+    background:
+      linear-gradient(180deg, rgba(0,0,0,.25), rgba(0,0,0,.55)),
+      linear-gradient(90deg, rgba(111,211,255,.18), rgba(74,168,255,.18));
+    border:1px solid var(--line);box-shadow:var(--glow-c);
   }
-  .heroTitle .grad{
-    background:linear-gradient(90deg,var(--prime),var(--accent));
+  /* Cromo azulado en el texto */
+  .heroTitle .chrome{
+    background:
+      linear-gradient(180deg,#cfe9ff 0%,#6fd3ff 18%,#cfe9ff 32%,#6aa2d8 48%,#d3e8ff 62%,#7fc6ff 78%,#e8f4ff 100%);
     -webkit-background-clip:text;background-clip:text;color:transparent;
+    text-shadow: 0 2px 12px rgba(111,211,255,.22);
   }
 
-  /* Barra de búsqueda */
+  /* ====== Search vidrio/metal ====== */
   .search{
-    margin:-28px auto 18px;padding:14px;width:min(94%,860px);
-    background:var(--glass);border:1px solid var(--stroke);border-radius:14px;
-    backdrop-filter:blur(6px);box-shadow:var(--shadow)
+    margin:-30px auto 20px;padding:14px;width:min(94%,880px);
+    background:
+      linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.03)),
+      repeating-linear-gradient(90deg, rgba(255,255,255,.05) 0 1px, transparent 2px 6px);
+    border:1px solid var(--line);border-radius:14px;backdrop-filter:blur(6px);box-shadow:var(--shadow)
   }
   .search form{display:flex;gap:10px}
   .search input{
-    flex:1;padding:12px 14px;border-radius:12px;border:1px solid var(--stroke);
-    background:#0b0f14;color:var(--ink);outline:none
+    flex:1;padding:12px 14px;border-radius:12px;border:1px solid var(--line);
+    background:linear-gradient(180deg,#0c131a,#0a1015);color:var(--ink);outline:none
   }
   .btn{
-    cursor:pointer;padding:12px 16px;border-radius:12px;border:0;font-weight:800;letter-spacing:.2px;
-    background:linear-gradient(180deg,#33dbff,#0ab1e0);color:#03141a;box-shadow:0 6px 14px rgba(10,177,224,.35)
+    cursor:pointer;padding:12px 16px;border-radius:12px;border:0;font-weight:900;letter-spacing:.2px;
+    background:linear-gradient(180deg,var(--neon),var(--neon-2));color:#03141a;
+    box-shadow:0 6px 18px rgba(79,160,255,.35)
   }
-  .btn:hover{filter:brightness(1.05)}
+  .btn:hover{filter:brightness(1.06)}
 
-  /* Sección categorías (tarjetas compactas, no largas) */
+  /* ====== Cards metálicas compactas ====== */
   .sectionHead{display:flex;align-items:center;justify-content:space-between;margin:8px 2px}
   .sectionHead h2{font-size:18px;margin:0}
-  .cats{display:grid;gap:12px;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));margin:12px 0 22px}
+  .cats{display:grid;gap:12px;grid-template-columns:repeat(auto-fill,minmax(168px,1fr));margin:12px 0 22px}
   .card{
-    position:relative;background:linear-gradient(180deg,#141821,#0e1117);
-    border:1px solid var(--stroke);border-radius:16px;padding:14px;min-height:110px;
+    position:relative;background:
+      linear-gradient(180deg, var(--steel-2), var(--steel)),
+      repeating-linear-gradient(0deg, rgba(255,255,255,.045) 0 1px, transparent 2px 4px);
+    border:1px solid var(--line);border-radius:16px;padding:14px;min-height:114px;
     display:flex;flex-direction:column;justify-content:space-between;
-    transition:transform .15s ease, box-shadow .15s ease;
+    transition:transform .15s ease, box-shadow .15s ease, border-color .15s ease;
   }
-  .card:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(0,0,0,.35)}
+  .card:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(0,0,0,.38);border-color:rgba(111,211,255,.5)}
   .chip{
-    align-self:flex-start;font-size:12px;padding:6px 10px;border-radius:999px;
-    background:linear-gradient(180deg,#1c2230,#111623);border:1px solid var(--stroke);color:var(--muted)
+    align-self:flex-start;font-size:12px;padding:6px 10px;border-radius:999px;color:var(--muted);
+    background:linear-gradient(180deg,#16202a,#0f161e);border:1px solid var(--line)
   }
   .card h3{margin:8px 0 2px;font-size:16px}
   .meta{font-size:12px;color:var(--muted)}
 
-  /* Icono SVG droidea en las tarjetas */
-  .ico{width:22px;height:22px;display:inline-block;vertical-align:-4px;margin-right:6px;filter:drop-shadow(0 0 6px rgba(40,215,255,.35))}
-  .ico path{stroke:var(--prime);stroke-width:1.6;fill:none}
+  /* Icono “circuito” */
+  .ico{width:22px;height:22px;display:inline-block;vertical-align:-4px;margin-right:6px;filter:drop-shadow(0 0 6px rgba(111,211,255,.25))}
+  .ico path{stroke:var(--neon);stroke-width:1.6;fill:none}
 
-  /* Mapa */
+  /* ====== Mapa con marco de acero ====== */
   .mapWrap{
-    margin:20px 0;border:1px solid var(--stroke);border-radius:16px;overflow:hidden;background:#0b0f14;box-shadow:var(--shadow)
+    margin:20px 0;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:#0b0f14;box-shadow:var(--shadow);
+    position:relative;
   }
-  .map{width:100%;height:360px;border:0;display:block;filter:saturate(1.05) contrast(1.05)}
+  .mapWrap:before{
+    content:"";position:absolute;inset:0;pointer-events:none;opacity:.18;
+    background:repeating-linear-gradient(0deg, rgba(180,210,240,.12) 0 1px, transparent 2px 4px);
+  }
+  .map{width:100%;height:360px;border:0;display:block;filter:saturate(1.05) contrast(1.06)}
 
-  /* CTA inferior fijo */
+  /* ====== CTA inferior ====== */
   .cta{
-    position:sticky;bottom:0;z-index:10;border-top:1px solid var(--stroke);
-    background:linear-gradient(180deg,rgba(11,13,17,.9),rgba(11,13,17,.96));backdrop-filter:blur(6px)
+    position:sticky;bottom:0;z-index:10;border-top:1px solid var(--line);
+    background:linear-gradient(180deg,rgba(10,16,21,.9),rgba(10,16,21,.96));backdrop-filter:blur(6px)
   }
   .cta .row{display:flex;gap:10px;padding:10px 0;flex-wrap:wrap}
   .cta .row a{flex:1;text-align:center;padding:12px 14px;border-radius:12px;font-weight:900;letter-spacing:.2px}
-  .cta .whatsapp{background:linear-gradient(180deg,#35ffc1,#0fb27a);color:#04140d;box-shadow:var(--glow-green)}
-  .cta .register{background:linear-gradient(180deg,#ffd66e,#ff9d00);color:#231500}
-  .cta .contact{background:linear-gradient(180deg,#b7c5ff,#5a74ff);color:#0a0f2b}
+  .cta .whatsapp{background:linear-gradient(180deg,#7ff0c9,#2bb987);color:#01150e;box-shadow:var(--glow-c)}
+  .cta .register{background:linear-gradient(180deg,#ffe08e,#ff9f2b);color:#231500}
+  .cta .contact{background:linear-gradient(180deg,#c7d4ff,#5d81ff);color:#0a0f2b}
 
-  /* Footer */
-  .divider{height:1px;background:linear-gradient(90deg,transparent,var(--stroke),transparent);margin:8px 0 16px}
+  /* ====== Footer ====== */
+  .divider{height:1px;background:linear-gradient(90deg,transparent,var(--line),transparent);margin:8px 0 16px}
   footer{color:var(--muted);font-size:12px;padding:18px 0 70px}
 
-  /* Accesibilidad chida */
-  :focus-visible{outline:2px dashed var(--prime);outline-offset:2px}
+  /* Accesibilidad */
+  :focus-visible{outline:2px dashed var(--neon);outline-offset:2px}
 </style>
 </head>
 <body>
 
   <div class="wrap">
-    <!-- Topbar -->
     <div class="topbar">
       <div>
-        <div class="brand">Droidea <span style="color:var(--prime)">·</span> Directory</div>
+        <div class="brand">Droidea <span style="color:var(--neon)">·</span> Directory</div>
         <div class="tag">Puerto Peñasco · MX</div>
       </div>
       <div class="lang">
@@ -149,13 +183,13 @@
     </div>
   </div>
 
-  <!-- HERO (imagen + título centrado) -->
   <header class="hero" role="banner" aria-label="Cabecera con imagen de Puerto Peñasco">
-    <h1 class="heroTitle"><span class="grad">Puerto Peñasco</span> Directory</h1>
+    <div class="corner tl"></div><div class="corner tr"></div>
+    <div class="corner bl"></div><div class="corner br"></div>
+    <h1 class="heroTitle"><span class="chrome">Puerto Peñasco</span> Directory</h1>
   </header>
 
   <div class="wrap">
-    <!-- Buscador -->
     <section class="search" aria-label="Buscador">
       <form onsubmit="event.preventDefault()">
         <input type="search" placeholder="Buscar negocios, ej. 'cafetería', 'hotel', 'tours'…" aria-label="Buscar">
@@ -163,13 +197,11 @@
       </form>
     </section>
 
-    <!-- Categorías -->
     <div class="sectionHead">
       <h2>Categorías</h2>
-      <small class="meta">Compactas · Estilo androide</small>
+      <small class="meta">Compactas · Acero azul</small>
     </div>
     <section class="cats" aria-label="Categorías de negocios">
-      <!-- Restaurante -->
       <article class="card">
         <span class="chip">★ Popular</span>
         <h3>
@@ -178,7 +210,7 @@
         </h3>
         <div class="meta">Mariscos, parrillas, comida local</div>
       </article>
-      <!-- Cafeterías -->
+
       <article class="card">
         <span class="chip">☕</span>
         <h3>
@@ -187,7 +219,7 @@
         </h3>
         <div class="meta">Especialidad, postres, Wi‑Fi</div>
       </article>
-      <!-- Hoteles -->
+
       <article class="card">
         <span class="chip">🏨</span>
         <h3>
@@ -196,7 +228,7 @@
         </h3>
         <div class="meta">Frente al mar, céntricos</div>
       </article>
-      <!-- Tours -->
+
       <article class="card">
         <span class="chip">⛵</span>
         <h3>
@@ -205,7 +237,7 @@
         </h3>
         <div class="meta">Barco, dunas, aventura</div>
       </article>
-      <!-- Servicios -->
+
       <article class="card">
         <span class="chip">🛠️</span>
         <h3>
@@ -214,7 +246,7 @@
         </h3>
         <div class="meta">Herrería, plomería, hogar</div>
       </article>
-      <!-- Tiendas -->
+
       <article class="card">
         <span class="chip">🛍️</span>
         <h3>
@@ -225,7 +257,6 @@
       </article>
     </section>
 
-    <!-- Mapa -->
     <section class="mapWrap" aria-label="Mapa">
       <iframe class="map" title="Mapa de negocios"
         src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d13288.5904!2d-113.530!3d31.318!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses-419!2smx!4v00000000000"
@@ -234,13 +265,11 @@
 
     <div class="divider"></div>
 
-    <!-- Footer -->
     <footer>
-      © <span id="yr"></span> Droidea Directory — Puerto Peñasco. Hecho con estilo androide.
+      © <span id="yr"></span> Droidea Directory — Puerto Peñasco. Azul metálico & androide.
     </footer>
   </div>
 
-  <!-- CTA inferior -->
   <nav class="cta" aria-label="Acciones rápidas">
     <div class="wrap">
       <div class="row">
@@ -252,20 +281,10 @@
   </nav>
 
 <script>
-  // Año dinámico
   document.getElementById('yr').textContent = new Date().getFullYear();
-
-  // Toggle idioma (visual; puedes conectar a i18n si gustas)
-  const es = document.getElementById('langES');
-  const en = document.getElementById('langEN');
-  es?.addEventListener('click', ()=>{ es.classList.add('active'); en.classList.remove('active'); });
-  en?.addEventListener('click', ()=>{ en.classList.add('active'); es.classList.remove('active'); });
-
-  // Evitar scroll raro al hacer click en “Registrar negocio”
-  // (Si no existe register.html, no rompe, solo previene salto feo)
-  document.querySelector('.register')?.addEventListener('click', (e)=>{
-    if(!e.currentTarget.getAttribute('href')) e.preventDefault();
-  });
+  const es=document.getElementById('langES'), en=document.getElementById('langEN');
+  es?.addEventListener('click',()=>{es.classList.add('active');en.classList.remove('active');});
+  en?.addEventListener('click',()=>{en.classList.add('active');es.classList.remove('active');});
 </script>
 </body>
 </html>
