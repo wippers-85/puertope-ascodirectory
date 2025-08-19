@@ -1,149 +1,259 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Directorio Puerto Peñasco</title>
-<meta name="description" content="Directorio de negocios en Puerto Peñasco: restaurantes, cafeterías, hoteles, tours, servicios, tiendas y casas de cambio.">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<title>Directorio Puerto Peñasco — Negocios con contacto y reseñas</title>
+<meta name="description" content="Directorio moderno de negocios en Puerto Peñasco con contacto por WhatsApp, llamadas, mapa, calificaciones y reseñas." />
+
+<!-- Open Graph -->
+<meta property="og:title" content="Directorio Puerto Peñasco" />
+<meta property="og:description" content="Encuentra restaurantes, cafés, hoteles, tours, servicios, tiendas y casas de cambio con contacto directo." />
+<meta property="og:type" content="website" />
+<meta property="og:image" content="assets/PuertoPenasco.jpg" />
+<meta name="theme-color" content="#0ea5e9" />
+
 <style>
   :root{
     /* Base clara */
     --bg:#ffffff;
-    --text:#222;
-    --muted:#555;
+    --ink:#1f2a37;
+    --muted:#64748b;
     --line:#e5edf6;
 
-    /* Azul metálico claro */
-    --blue:#5fb6ff;
-    --blue2:#8ed8ff;
+    /* Marca (azul moderno) */
+    --brand:#0ea5e9;
+    --brand2:#38bdf8;
+
+    /* Botones */
+    --whats:#22c55e;
+    --call:#2563eb;
+    --reviews:#f59e0b;
 
     /* UI */
-    --card:#fff;
-    --softshadow:0 4px 14px rgba(0,0,0,.06);
+    --card:#ffffff;
+    --shadow:0 10px 26px rgba(2,6,23,.08);
   }
   *{box-sizing:border-box}
-  html,body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial}
-  a{color:var(--blue);text-decoration:none}
+  html,body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial}
+  img{max-width:100%;display:block}
+  a{color:var(--brand);text-decoration:none}
+  :focus-visible{outline:2px dashed var(--brand);outline-offset:2px}
+
+  /* WRAP */
   .wrap{max-width:1120px;margin:0 auto;padding:16px}
 
-  /* FRANJA (hero) azul metálico claro, título centrado */
+  /* HERO con foto + overlay claro y TÍTULO CENTRADO */
   .hero{
-    position:relative; height:280px; display:grid; place-items:center; color:#fff; text-align:center;
+    position:relative;height:300px;min-height:260px;
     background:
-      linear-gradient(135deg, var(--blue), var(--blue2));
-    overflow:hidden;
+      linear-gradient(180deg, rgba(2,6,23,.28), rgba(2,6,23,.46)),
+      url('assets/PuertoPenasco.jpg') center/cover no-repeat;
+    display:grid;place-items:center;color:#fff;text-align:center;overflow:hidden;
+    border-bottom:1px solid var(--line);
   }
-  /* sutil “metal cepillado” */
   .hero::after{
-    content:""; position:absolute; inset:0; pointer-events:none; opacity:.15;
-    background:
-      repeating-linear-gradient(0deg, rgba(255,255,255,.6) 0 1px, transparent 2px 5px);
-    mix-blend-mode:screen;
+    content:"";position:absolute;inset:0;pointer-events:none;opacity:.12;mix-blend-mode:screen;
+    background:repeating-linear-gradient(90deg, rgba(255,255,255,.5) 0 1px, transparent 2px 7px);
   }
   .hero h1{
-    margin:0; padding:14px 20px; font-size:clamp(28px,6vw,56px);
-    font-weight:900; text-transform:uppercase; letter-spacing:.5px;
+    position:relative;margin:0;padding:14px 20px;border-radius:16px;
+    font-size:clamp(28px,6vw,56px);font-weight:900;letter-spacing:.5px;text-transform:uppercase;
+    background:linear-gradient(180deg, rgba(0,0,0,.18), rgba(0,0,0,.32));
+    border:1px solid rgba(255,255,255,.25);
+    box-shadow:0 8px 24px rgba(0,0,0,.25);
   }
 
-  /* Buscador */
+  /* BUSCADOR */
   .search{
-    margin:-30px auto 28px; padding:16px; width:min(94%,880px);
-    background:#f6faff; border:1px solid var(--line); border-radius:12px; box-shadow:var(--softshadow);
+    margin:-28px auto 24px;padding:16px;width:min(94%,900px);
+    background:#f6faff;border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow)
   }
-  .search form{display:flex; gap:10px}
+  .search form{display:flex;gap:10px}
   .search input{
-    flex:1; padding:12px; border-radius:8px; border:1px solid var(--line); outline:none;
+    flex:1;padding:12px 14px;border-radius:10px;border:1px solid var(--line);outline:none
   }
-  .search button{
-    padding:12px 16px; border:0; border-radius:8px; cursor:pointer; font-weight:700; color:#fff;
-    background:linear-gradient(135deg, var(--blue), var(--blue2));
+  .btn{
+    padding:12px 16px;border:0;border-radius:10px;font-weight:800;cursor:pointer;color:#fff;
+    background:linear-gradient(135deg, var(--brand), var(--brand2));
+    box-shadow:0 6px 16px rgba(14,165,233,.35)
   }
 
-  /* Secciones & tarjetas */
-  h2{margin:24px 0 12px; font-size:20px; color:#1e6fcf}
-  .grid{display:grid; gap:12px; grid-template-columns:repeat(auto-fill, minmax(240px,1fr)); margin-bottom:30px}
+  /* TITULARES DE SECCIÓN */
+  h2{margin:28px 4px 12px;font-size:20px;color:#0f172a}
+
+  /* GRID TARJETAS GRANDES */
+  .grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fill,minmax(320px,1fr))}
   .card{
-    background:var(--card); border:1px solid var(--line); border-radius:12px; padding:14px; box-shadow:var(--softshadow);
+    background:var(--card);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);
+    overflow:hidden;display:flex;flex-direction:column;transition:transform .15s ease, box-shadow .15s ease
   }
-  .card h3{margin:6px 0 4px; font-size:16px}
-  .meta{font-size:13px; color:var(--muted)}
+  .card:hover{transform:translateY(-2px);box-shadow:0 16px 36px rgba(2,6,23,.12)}
 
-  /* Mapa al final para alargar la página */
-  .mapWrap{
-    margin:8px 0 30px; border:1px solid var(--line); border-radius:12px; overflow:hidden; box-shadow:var(--softshadow);
-    background:#f6faff;
+  .cardTop{display:flex;gap:14px;padding:16px}
+  .avatar{
+    width:84px;height:84px;border-radius:12px;flex:0 0 auto;overflow:hidden;border:1px solid var(--line);
+    background:#eef6ff url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2284%22 height=%2284%22><rect width=%2284%22 height=%2284%22 fill=%22%23dbeafe%22/><path d=%22M8 60c8-12 24-18 34-18s26 6 34 18v8H8z%22 fill=%22%23bfdbfe%22/><circle cx=%2242%22 cy=%2232%22 r=%2216%22 fill=%22%2393c5fd%22/></svg>') center/cover no-repeat;
   }
-  .map{width:100%; height:380px; border:0; display:block}
+  .info{flex:1 1 auto}
+  .title{margin:0 0 6px;font-size:18px;font-weight:800}
+  .meta{margin:0;font-size:13px;color:var(--muted)}
 
-  /* Footer con respiro extra */
-  footer{border-top:1px solid var(--line); padding:26px 16px 40px; color:var(--muted); font-size:14px; text-align:center}
+  /* ESTRELLAS + RESEÑAS */
+  .rating{display:flex;align-items:center;gap:8px;margin:8px 0 0}
+  .stars{display:inline-flex;gap:2px}
+  .stars svg{width:16px;height:16px;fill:#fbbf24}
+  .count{font-size:12px;color:var(--muted)}
+
+  /* ACCIONES */
+  .actions{display:flex;gap:10px;flex-wrap:wrap;padding:0 16px 14px}
+  .actions a{
+    flex:1;display:flex;align-items:center;justify-content:center;gap:8px;
+    border-radius:10px;padding:10px 12px;font-weight:800;border:1px solid var(--line)
+  }
+  .actions svg{width:16px;height:16px}
+  .whats{background:#e8fff3;color:#065f46;border-color:#a7f3d0}
+  .call{background:#eef4ff;color:#0c4a6e;border-color:#bfdbfe}
+  .map{background:#fafafa;color:#334155}
+  .reviews{background:#fff7ed;color:#7c2d12;border-color:#fed7aa}
+
+  /* DIRECCIÓN */
+  .addr{padding:0 16px 16px;font-size:13px;color:var(--muted)}
+
+  /* MAPA GENERAL (al final) */
+  .mapWrap{margin:12px 0 36px;border:1px solid var(--line);border-radius:16px;overflow:hidden;box-shadow:var(--shadow)}
+  .map{width:100%;height:420px;border:0;display:block}
+
+  /* FOOTER */
+  footer{border-top:1px solid var(--line);padding:26px 16px 40px;text-align:center;color:var(--muted);font-size:14px}
 </style>
 </head>
 <body>
 
-  <!-- Franja azul metálico (sin foto), mismo título centrado -->
-  <header class="hero" role="banner" aria-label="Cabecera">
+  <!-- HERO -->
+  <header class="hero" role="banner" aria-label="Cabecera con imagen de Puerto Peñasco">
     <h1>Puerto Peñasco Directory</h1>
   </header>
 
   <main class="wrap">
-    <!-- Buscador -->
+    <!-- BUSCADOR -->
     <section class="search" aria-label="Buscador">
       <form onsubmit="event.preventDefault()">
-        <input type="search" placeholder="Buscar negocios (ej. cafetería, hotel, cambio)" aria-label="Buscar">
-        <button type="submit">Buscar</button>
+        <input type="search" placeholder="Buscar negocios (ej. cafetería, hotel, cambio, herrería…)" aria-label="Buscar" />
+        <button class="btn" type="submit">Buscar</button>
       </form>
     </section>
 
-    <!-- Restaurantes -->
+    <!-- RESTAURANTES -->
     <h2>Restaurantes</h2>
-    <div class="grid">
-      <article class="card"><h3>Mariscos El Golfo</h3><p class="meta">Cocteles, ceviches, aguachiles</p></article>
-      <article class="card"><h3>Parrilla del Mar</h3><p class="meta">Cortes y mariscos a la brasa</p></article>
-    </div>
+    <section class="grid" aria-label="Restaurantes">
+      <!-- 1 -->
+      <article class="card" itemscope itemtype="https://schema.org/Restaurant">
+        <div class="cardTop">
+          <div class="avatar" aria-hidden="true"></div>
+          <div class="info">
+            <h3 class="title" itemprop="name">Mariscos El Golfo</h3>
+            <p class="meta"><span itemprop="servesCuisine">Mariscos</span> · Cocteles, ceviches, aguachiles</p>
+            <div class="rating" itemprop="aggregateRating" itemscope itemtype="https://schema.org/AggregateRating">
+              <div class="stars" aria-label="Calificación 4.8 de 5">
+                <!-- 5 estrellas -->
+                <svg viewBox="0 0 24 24"><path d="M12 17.27l6.18 3.73-1.64-7.03L21 9.24l-7.19-.62L12 2 10.19 8.62 3 9.24l4.46 4.73L5.82 21z"/></svg>
+                <svg viewBox="0 0 24 24"><path d="M12 17.27l6.18 3.73-1.64-7.03L21 9.24l-7.19-.62L12 2 10.19 8.62 3 9.24l4.46 4.73L5.82 21z"/></svg>
+                <svg viewBox="0 0 24 24"><path d="M12 17.27l6.18 3.73-1.64-7.03L21 9.24l-7.19-.62L12 2 10.19 8.62 3 9.24l4.46 4.73L5.82 21z"/></svg>
+                <svg viewBox="0 0 24 24"><path d="M12 17.27l6.18 3.73-1.64-7.03L21 9.24l-7.19-.62L12 2 10.19 8.62 3 9.24l4.46 4.73L5.82 21z"/></svg>
+                <svg viewBox="0 0 24 24"><path d="M12 17.27l6.18 3.73-1.64-7.03L21 9.24l-7.19-.62L12 2 10.19 8.62 3 9.24l4.46 4.73L5.82 21z"/></svg>
+              </div>
+              <div class="count"><span itemprop="ratingValue">4.8</span> · <span itemprop="ratingCount">231</span> reseñas</div>
+            </div>
+          </div>
+        </div>
+        <div class="actions">
+          <a class="whats" href="https://wa.me/526381129259?text=Hola%20Mariscos%20El%20Golfo%2C%20vi%20tu%20negocio%20en%20el%20Directorio%20de%20Puerto%20Pe%C3%B1asco.%20%C2%BFMe%20compartes%20informaci%C3%B3n%3F" target="_blank" rel="noopener" aria-label="WhatsApp Mariscos El Golfo">
+            <!-- ícono -->
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 3.5A10 10 0 0 0 4 19.36L3 22l2.72-.72A10 10 0 1 0 20 3.5ZM6.09 19l.23-.07 1.44.38-1-.95a8 8 0 1 1 2.83 1.65l-.25-.09L7 20l-.91-.99ZM8.8 7.9c.2-.47.3-.5.55-.5h.47c.15 0 .35 0 .54.42.2.47.67 1.61.73 1.73.06.12.1.26 0 .42-.09.15-.14.24-.28.37-.14.14-.3.31-.43.42-.14.12-.29.25-.12.51.18.25.8 1.3 1.72 2.1 1.18 1.05 2.18 1.39 2.48 1.55.3.16.47.14.64-.08.17-.22.73-.85.93-1.14.2-.3.39-.25.65-.15.27.1 1.7.8 1.99.94.29.14.48.22.55.34.07.12.07.7-.16 1.38-.23.68-1.34 1.28-1.85 1.36-.47.07-1.07.1-1.72-.1a9 9 0 0 1-3.02-1.4 12.6 12.6 0 0 1-2.42-2.14A9.2 9.2 0 0 1 8 12.2c-.28-.5-.52-1.11-.6-1.29-.08-.18-.06-.41.03-.58.1-.17.55-1.31.66-1.43Z"/></svg>
+            WhatsApp
+          </a>
+          <a class="call" href="tel:+526381129259" aria-label="Llamar a Mariscos El Golfo">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8a15.5 15.5 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25c1.1.37 2.3.57 3.6.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1C10.9 21 3 13.1 3 3a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.3.2 2.5.57 3.6a1 1 0 0 1-.25 1L6.6 10.8Z"/></svg>
+            Llamar
+          </a>
+          <a class="map" href="https://www.google.com/maps/search/?api=1&query=Mariscos+El+Golfo+Puerto+Pe%C3%B1asco" target="_blank" rel="noopener">Ver mapa</a>
+          <a class="reviews" href="#reseñas-golfo">Reseñas</a>
+        </div>
+        <div class="addr">Av. Benito Juárez s/n, Puerto Peñasco</div>
+      </article>
 
-    <!-- Cafeterías -->
+      <!-- 2 -->
+      <article class="card" itemscope itemtype="https://schema.org/Restaurant">
+        <div class="cardTop">
+          <div class="avatar" aria-hidden="true"></div>
+          <div class="info">
+            <h3 class="title" itemprop="name">Parrilla del Mar</h3>
+            <p class="meta">Cortes y mariscos a la brasa</p>
+            <div class="rating" itemprop="aggregateRating" itemscope itemtype="https://schema.org/AggregateRating">
+              <div class="stars" aria-label="Calificación 4.4 de 5">
+                <svg viewBox="0 0 24 24"><path d="M12 17.27l6.18 3.73-1.64-7.03L21 9.24l-7.19-.62L12 2 10.19 8.62 3 9.24l4.46 4.73L5.82 21z"/></svg>
+                <svg viewBox="0 0 24 24"><path d="M12 17.27l6.18 3.73-1.64-7.03L21 9.24l-7.19-.62L12 2 10.19 8.62 3 9.24l4.46 4.73L5.82 21z"/></svg>
+                <svg viewBox="0 0 24 24"><path d="M12 17.27l6.18 3.73-1.64-7.03L21 9.24l-7.19-.62L12 2 10.19 8.62 3 9.24l4.46 4.73L5.82 21z"/></svg>
+                <svg viewBox="0 0 24 24"><path d="M12 17.27l6.18 3.73-1.64-7.03L21 9.24l-7.19-.62L12 2 10.19 8.62 3 9.24l4.46 4.73L5.82 21z"/></svg>
+                <svg viewBox="0 0 24 24" style="opacity:.35"><path d="M12 17.27l6.18 3.73-1.64-7.03L21 9.24l-7.19-.62L12 2 10.19 8.62 3 9.24l4.46 4.73L5.82 21z"/></svg>
+              </div>
+              <div class="count"><span itemprop="ratingValue">4.4</span> · <span itemprop="ratingCount">118</span> reseñas</div>
+            </div>
+          </div>
+        </div>
+        <div class="actions">
+          <a class="whats" href="https://wa.me/526381129259?text=Hola%20Parrilla%20del%20Mar%2C%20te%20vi%20en%20el%20Directorio.%20%C2%BFReservas%20disponibles%3F" target="_blank" rel="noopener">WhatsApp</a>
+          <a class="call" href="tel:+526381129259">Llamar</a>
+          <a class="map" href="https://www.google.com/maps/search/?api=1&query=Parrilla+del+Mar+Puerto+Pe%C3%B1asco" target="_blank" rel="noopener">Ver mapa</a>
+          <a class="reviews" href="#reseñas-parrilla">Reseñas</a>
+        </div>
+        <div class="addr">Blvd. Fremont 120, Puerto Peñasco</div>
+      </article>
+    </section>
+
+    <!-- CAFETERÍAS -->
     <h2>Cafeterías</h2>
-    <div class="grid">
-      <article class="card"><h3>Café Aroma</h3><p class="meta">Café de especialidad y postres</p></article>
-      <article class="card"><h3>La Taza Azul</h3><p class="meta">Wi‑Fi, desayunos y pan dulce</p></article>
-    </div>
+    <section class="grid" aria-label="Cafeterías">
+      <article class="card"><div class="cardTop"><div class="avatar"></div><div class="info"><h3 class="title">Café Aroma</h3><p class="meta">Café de especialidad y postres</p><div class="rating"><div class="stars"><svg viewBox="0 0 24 24"><path d="M12 17.27l6.18 3.73-1.64-7.03L21 9.24l-7.19-.62L12 2 10.19 8.62 3 9.24l4.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27l6.18 3.73-1.64-7.03L21 9.24l-7.19-.62L12 2 10.19 8.62 3 9.24l4.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27l6.18 3.73-1.64-7.03L21 9.24l-7.19-.62L12 2 10.19 8.62 3 9.24l4.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27l6.18 3.73-1.64-7.03L21 9.24l-7.19-.62L12 2 10.19 8.62 3 9.24l4.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27l6.18 3.73-1.64-7.03L21 9.24l-7.19-.62L12 2 10.19 8.62 3 9.24l4.46 4.73L5.82 21z"/></svg></div><div class="count">4.9 · 87 reseñas</div></div></div></div><div class="actions"><a class="whats" href="https://wa.me/526381129259?text=Hola%20Caf%C3%A9%20Aroma%2C%20te%20vi%20en%20el%20Directorio.%20%C2%BFHorario%3F" target="_blank" rel="noopener">WhatsApp</a><a class="call" href="tel:+526381129259">Llamar</a><a class="map" href="https://www.google.com/maps/search/?api=1&query=Caf%C3%A9+Aroma+Puerto+Pe%C3%B1asco" target="_blank" rel="noopener">Ver mapa</a><a class="reviews" href="#reseñas-aroma">Reseñas</a></div><div class="addr">Calle 13 #45, Centro</div></article>
+      <article class="card"><div class="cardTop"><div class="avatar"></div><div class="info"><h3 class="title">La Taza Azul</h3><p class="meta">Wi‑Fi, desayunos y pan dulce</p><div class="rating"><div class="stars"><svg viewBox="0 0 24 24"><path d="M12 17.27l6.18 3.73-1.64-7.03L21 9.24l-7.19-.62L12 2 10.19 8.62 3 9.24l4.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27l6.18 3.73-1.64-7.03L21 9.24l-7.19-.62L12 2 10.19 8.62 3 9.24l4.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27l6.18 3.73-1.64-7.03L21 9.24l-7.19-.62L12 2 10.19 8.62 3 9.24l4.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27l6.18 3.73-1.64-7.03L21 9.24l-7.19-.62L12 2 10.19 8.62 3 9.24l4.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24" style="opacity:.35"><path d="M12 17.27l6.18 3.73-1.64-7.03L21 9.24l-7.19-.62L12 2 10.19 8.62 3 9.24l4.46 4.73L5.82 21z"/></svg></div><div class="count">4.5 · 64 reseñas</div></div></div></div><div class="actions"><a class="whats" href="https://wa.me/526381129259?text=Hola%20La%20Taza%20Azul%2C%20vi%20su%20perfil%20en%20el%20Directorio.%20%C2%BFMen%C3%BA%20del%20d%C3%ADa%3F" target="_blank" rel="noopener">WhatsApp</a><a class="call" href="tel:+526381129259">Llamar</a><a class="map" href="https://www.google.com/maps/search/?api=1&query=La+Taza+Azul+Puerto+Pe%C3%B1asco" target="_blank" rel="noopener">Ver mapa</a><a class="reviews" href="#reseñas-taza">Reseñas</a></div><div class="addr">Av. Constitución 210</div></article>
+    </section>
 
-    <!-- Hoteles & Tours -->
+    <!-- HOTELES & TOURS -->
     <h2>Hoteles & Tours</h2>
-    <div class="grid">
-      <article class="card"><h3>Hotel Vista al Mar</h3><p class="meta">Habitaciones frente al mar</p></article>
-      <article class="card"><h3>Tours Las Dunas</h3><p class="meta">RZR, arena y aventuras guiadas</p></article>
-    </div>
+    <section class="grid" aria-label="Hoteles y Tours">
+      <article class="card"><div class="cardTop"><div class="avatar"></div><div class="info"><h3 class="title">Hotel Vista al Mar</h3><p class="meta">Habitaciones frente al mar</p><div class="rating"><div class="stars"><svg viewBox="0 0 24 24"><path d="M12 17.27l6.18 3.73-1.64-7.03L21 9.24l-7.19-.62L12 2 10.19 8.62 3 9.24l4.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27l6.18 3.73-1.64-7.03L21 9.24l-7.19-.62L12 2 10.19 8.62 3 9.24l4.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27l6.18 3.73-1.64-7.03L21 9.24l-7.19-.62L12 2 10.19 8.62 3 9.24l4.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27l6.18 3.73-1.64-7.03L21 9.24l-7.19-.62L12 2 10.19 8.62 3 9.24l4.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24" style="opacity:.35"><path d="M12 17.27l6.18 3.73-1.64-7.03L21 9.24l-7.19-.62L12 2 10.19 8.62 3 9.24l4.46 4.73L5.82 21z"/></svg></div><div class="count">4.4 · 312 reseñas</div></div></div></div><div class="actions"><a class="whats" href="https://wa.me/526381129259?text=Hola%20Hotel%20Vista%20al%20Mar%2C%20te%20vi%20en%20el%20Directorio.%20%C2%BFPrecios%20y%20disponibilidad%3F" target="_blank" rel="noopener">WhatsApp</a><a class="call" href="tel:+526381129259">Llamar</a><a class="map" href="https://www.google.com/maps/search/?api=1&query=Hotel+Vista+al+Mar+Puerto+Pe%C3%B1asco" target="_blank" rel="noopener">Ver mapa</a><a class="reviews" href="#reseñas-vista">Reseñas</a></div><div class="addr">Malecón Fundadores s/n</div></article>
+      <article class="card"><div class="cardTop"><div class="avatar"></div><div class="info"><h3 class="title">Tours Las Dunas</h3><p class="meta">RZR, arena y aventuras guiadas</p><div class="rating"><div class="stars"><svg viewBox="0 0 24 24"><path d="M12 17.27l6.18 3.73-1.64-7.03L21 9.24l-7.19-.62L12 2 10.19 8.62 3 9.24l4.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27l6.18 3.73-1.64-7.03L21 9.24l-7.19-.62L12 2 10.19 8.62 3 9.24l4.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27l6.18 3.73-1.64-7.03L21 9.24l-7.19-.62L12 2 10.19 8.62 3 9.24l4.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27l6.18 3.73-1.64-7.03L21 9.24l-7.19-.62L12 2 10.19 8.62 3 9.24l4.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27l6.18 3.73-1.64-7.03L21 9.24l-7.19-.62L12 2 10.19 8.62 3 9.24l4.46 4.73L5.82 21z"/></svg></div><div class="count">4.9 · 154 reseñas</div></div></div></div><div class="actions"><a class="whats" href="https://wa.me/526381129259?text=Hola%20Tours%20Las%20Dunas%2C%20vi%20su%20perfil%20en%20el%20Directorio.%20%C2%BFInfo%20de%20tours%3F" target="_blank" rel="noopener">WhatsApp</a><a class="call" href="tel:+526381129259">Llamar</a><a class="map" href="https://www.google.com/maps/search/?api=1&query=Tours+Las+Dunas+Puerto+Pe%C3%B1asco" target="_blank" rel="noopener">Ver mapa</a><a class="reviews" href="#reseñas-dunas">Reseñas</a></div><div class="addr">Blvd. Sandy Beach</div></article>
+    </section>
 
-    <!-- Servicios (Herrería / Plomería) -->
+    <!-- SERVICIOS -->
     <h2>Servicios</h2>
-    <div class="grid">
-      <article class="card"><h3>Herrería López</h3><p class="meta">Portones, estructuras metálicas</p></article>
-      <article class="card"><h3>Plomería Rápida</h3><p class="meta">Instalaciones y reparaciones</p></article>
-    </div>
+    <section class="grid" aria-label="Servicios">
+      <article class="card"><div class="cardTop"><div class="avatar"></div><div class="info"><h3 class="title">Herrería López</h3><p class="meta">Portones, estructuras metálicas</p><div class="rating"><div class="stars"><svg viewBox="0 0 24 24"><path d="M12 17.27l6.18 3.73-1.64-7.03L21 9.24l-7.19-.62L12 2 10.19 8.62 3 9.24l4.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27l6.18 3.73-1.64-7.03L21 9.24l-7.19-.62L12 2 10.19 8.62 3 9.24l4.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27l6.18 3.73-1.64-7.03L21 9.24l-7.19-.62L12 2 10.19 8.62 3 9.24l4.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27l6.18 3.73-1.64-7.03L21 9.24l-7.19-.62L12 2 10.19 8.62 3 9.24l4.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27l6.18 3.73-1.64-7.03L21 9.24l-7.19-.62L12 2 10.19 8.62 3 9.24l4.46 4.73L5.82 21z"/></svg></div><div class="count">4.9 · 76 reseñas</div></div></div></div><div class="actions"><a class="whats" href="https://wa.me/526381129259?text=Hola%20Herrer%C3%ADa%20L%C3%B3pez%2C%20te%20vi%20en%20el%20Directorio.%20%C2%BFCotizaci%C3%B3n%20de%20port%C3%B3n%3F" target="_blank" rel="noopener">WhatsApp</a><a class="call" href="tel:+526381129259">Llamar</a><a class="map" href="https://www.google.com/maps/search/?api=1&query=Herrer%C3%ADa+L%C3%B3pez+Puerto+Pe%C3%B1asco" target="_blank" rel="noopener">Ver mapa</a><a class="reviews" href="#reseñas-herreria">Reseñas</a></div><div class="addr">Col. Oriente, Puerto Peñasco</div></article>
+      <article class="card"><div class="cardTop"><div class="avatar"></div><div class="info"><h3 class="title">Plomería Rápida</h3><p class="meta">Instalaciones y reparaciones</p><div class="rating"><div class="stars"><svg viewBox="0 0 24 24"><path d="M12 17.27l6.18 3.73-1.64-7.03L21 9.24l-7.19-.62L12 2 10.19 8.62 3 9.24l4.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27l6.18 3.73-1.64-7.03L21 9.24l-7.19-.62L12 2 10.19 8.62 3 9.24l4.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27l6.18 3.73-1.64-7.03L21 9.24l-7.19-.62L12 2 10.19 8.62 3 9.24l4.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27l6.18 3.73-1.64-7.03L21 9.24l-7.19-.62L12 2 10.19 8.62 3 9.24l4.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24" style="opacity:.35"><path d="M12 17.27l6.18 3.73-1.64-7.03L21 9.24l-7.19-.62L12 2 10.19 8.62 3 9.24l4.46 4.73L5.82 21z"/></svg></div><div class="count">4.6 · 92 reseñas</div></div></div></div><div class="actions"><a class="whats" href="https://wa.me/526381129259?text=Hola%20Plomer%C3%ADa%20R%C3%A1pida%2C%20vi%20su%20perfil.%20%C2%BFDisponibilidad%20hoy%3F" target="_blank" rel="noopener">WhatsApp</a><a class="call" href="tel:+526381129259">Llamar</a><a class="map" href="https://www.google.com/maps/search/?api=1&query=Plomer%C3%ADa+R%C3%A1pida+Puerto+Pe%C3%B1asco" target="_blank" rel="noopener">Ver mapa</a><a class="reviews" href="#reseñas-plomeria">Reseñas</a></div><div class="addr">Av. Constitución 88</div></article>
+    </section>
 
-    <!-- Tiendas (Ropa / Artesanías) -->
+    <!-- TIENDAS -->
     <h2>Tiendas</h2>
-    <div class="grid">
-      <article class="card"><h3>Moda Joven</h3><p class="meta">Ropa casual y accesorios</p></article>
-      <article class="card"><h3>Artesanías del Desierto</h3><p class="meta">Souvenirs y arte local</p></article>
-    </div>
+    <section class="grid" aria-label="Tiendas">
+      <article class="card"><div class="cardTop"><div class="avatar"></div><div class="info"><h3 class="title">Moda Joven</h3><p class="meta">Ropa casual y accesorios</p><div class="rating"><div class="stars"><svg viewBox="0 0 24 24"><path d="M12 17.27l6.18 3.73-1.64-7.03L21 9.24l-7.19-.62L12 2 10.19 8.62 3 9.24l4.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27l6.18 3.73-1.64-7.03L21 9.24l-7.19-.62L12 2 10.19 8.62 3 9.24l4.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27l6.18 3.73-1.64-7.03L21 9.24l-7.19-.62L12 2 10.19 8.62 3 9.24l4.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27l6.18 3.73-1.64-7.03L21 9.24l-7.19-.62L12 2 10.19 8.62 3 9.24l4.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24" style="opacity:.35"><path d="M12 17.27l6.18 3.73-1.64-7.03L21 9.24l-7.19-.62L12 2 10.19 8.62 3 9.24l4.46 4.73L5.82 21z"/></svg></div><div class="count">4.5 · 41 reseñas</div></div></div></div><div class="actions"><a class="whats" href="https://wa.me/526381129259?text=Hola%20Moda%20Joven%2C%20te%20vi%20en%20el%20Directorio.%20%C2%BFNovedades%3F" target="_blank" rel="noopener">WhatsApp</a><a class="call" href="tel:+526381129259">Llamar</a><a class="map" href="https://www.google.com/maps/search/?api=1&query=Moda+Joven+Puerto+Pe%C3%B1asco" target="_blank" rel="noopener">Ver mapa</a><a class="reviews" href="#reseñas-moda">Reseñas</a></div><div class="addr">Centro Comercial Bahía</div></article>
+      <article class="card"><div class="cardTop"><div class="avatar"></div><div class="info"><h3 class="title">Artesanías del Desierto</h3><p class="meta">Souvenirs y arte local</p><div class="rating"><div class="stars"><svg viewBox="0 0 24 24"><path d="M12 17.27l6.18 3.73-1.64-7.03L21 9.24l-7.19-.62L12 2 10.19 8.62 3 9.24l4.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27l6.18 3.73-1.64-7.03L21 9.24l-7.19-.62L12 2 10.19 8.62 3 9.24l4.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27l6.18 3.73-1.64-7.03L21 9.24l-7.19-.62L12 2 10.19 8.62 3 9.24l4.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27l6.18 3.73-1.64-7.03L21 9.24l-7.19-.62L12 2 10.19 8.62 3 9.24l4.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27l6.18 3.73-1.64-7.03L21 9.24l-7.19-.62L12 2 10.19 8.62 3 9.24l4.46 4.73L5.82 21z"/></svg></div><div class="count">4.8 · 53 reseñas</div></div></div></div><div class="actions"><a class="whats" href="https://wa.me/526381129259?text=Hola%20Artesan%C3%ADas%20del%20Desierto%2C%20vi%20su%20negocio%20en%20el%20Directorio.%20%C2%BFHorarios%3F" target="_blank" rel="noopener">WhatsApp</a><a class="call" href="tel:+526381129259">Llamar</a><a class="map" href="https://www.google.com/maps/search/?api=1&query=Artesan%C3%ADas+del+Desierto+Puerto+Pe%C3%B1asco" target="_blank" rel="noopener">Ver mapa</a><a class="reviews" href="#reseñas-artesanias">Reseñas</a></div><div class="addr">Malecón, Local 12</div></article>
+    </section>
 
-    <!-- Casas de Cambio -->
+    <!-- CASAS DE CAMBIO -->
     <h2>Casas de Cambio</h2>
-    <div class="grid">
-      <article class="card"><h3>Cambio Peñasco</h3><p class="meta">Dólar ↔ Peso, tasas competitivas</p></article>
-      <article class="card"><h3>Money Express</h3><p class="meta">Transferencias y divisas</p></article>
-    </div>
+    <section class="grid" aria-label="Casas de Cambio">
+      <article class="card"><div class="cardTop"><div class="avatar"></div><div class="info"><h3 class="title">Cambio Peñasco</h3><p class="meta">Dólar ↔ Peso, tasas competitivas</p><div class="rating"><div class="stars"><svg viewBox="0 0 24 24"><path d="M12 17.27l6.18 3.73-1.64-7.03L21 9.24l-7.19-.62L12 2 10.19 8.62 3 9.24l4.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27l6.18 3.73-1.64-7.03L21 9.24l-7.19-.62L12 2 10.19 8.62 3 9.24l4.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27l6.18 3.73-1.64-7.03L21 9.24l-7.19-.62L12 2 10.19 8.62 3 9.24l4.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27l6.18 3.73-1.64-7.03L21 9.24l-7.19-.62L12 2 10.19 8.62 3 9.24l4.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27l6.18 3.73-1.64-7.03L21 9.24l-7.19-.62L12 2 10.19 8.62 3 9.24l4.46 4.73L5.82 21z"/></svg></div><div class="count">4.8 · 129 reseñas</div></div></div></div><div class="actions"><a class="whats" href="https://wa.me/526381129259?text=Hola%20Cambio%20Pe%C3%B1asco%2C%20vi%20su%20perfil.%20%C2%BFTipo%20de%20cambio%20hoy%3F" target="_blank" rel="noopener">WhatsApp</a><a class="call" href="tel:+526381129259">Llamar</a><a class="map" href="https://www.google.com/maps/search/?api=1&query=Cambio+Pe%C3%B1asco+Puerto+Pe%C3%B1asco" target="_blank" rel="noopener">Ver mapa</a><a class="reviews" href="#reseñas-cambio1">Reseñas</a></div><div class="addr">Blvd. Benito Juárez 300</div></article>
+      <article class="card"><div class="cardTop"><div class="avatar"></div><div class="info"><h3 class="title">Money Express</h3><p class="meta">Transferencias y divisas</p><div class="rating"><div class="stars"><svg viewBox="0 0 24 24"><path d="M12 17.27l6.18 3.73-1.64-7.03L21 9.24l-7.19-.62L12 2 10.19 8.62 3 9.24l4.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27l6.18 3.73-1.64-7.03L21 9.24l-7.19-.62L12 2 10.19 8.62 3 9.24l4.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27l6.18 3.73-1.64-7.03L21 9.24l-7.19-.62L12 2 10.19 8.62 3 9.24l4.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27l6.18 3.73-1.64-7.03L21 9.24l-7.19-.62L12 2 10.19 8.62 3 9.24l4.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24" style="opacity:.35"><path d="M12 17.27l6.18 3.73-1.64-7.03L21 9.24l-7.19-.62L12 2 10.19 8.62 3 9.24l4.46 4.73L5.82 21z"/></svg></div><div class="count">4.4 · 74 reseñas</div></div></div></div><div class="actions"><a class="whats" href="https://wa.me/526381129259?text=Hola%20Money%20Express%2C%20te%20vi%20en%20el%20Directorio.%20%C2%BFHorario%20y%20requisitos%3F" target="_blank" rel="noopener">WhatsApp</a><a class="call" href="tel:+526381129259">Llamar</a><a class="map" href="https://www.google.com/maps/search/?api=1&query=Money+Express+Puerto+Pe%C3%B1asco" target="_blank" rel="noopener">Ver mapa</a><a class="reviews" href="#reseñas-cambio2">Reseñas</a></div><div class="addr">Zona Centro</div></article>
+    </section>
 
-    <!-- Google Maps al final -->
-    <section class="mapWrap" aria-label="Mapa de negocios">
-      <iframe class="map" title="Mapa de negocios en Puerto Peñasco"
+    <!-- MAPA GENERAL -->
+    <section class="mapWrap" aria-label="Mapa general de Puerto Peñasco">
+      <iframe class="map" title="Mapa general — Puerto Peñasco"
         src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d13288.5904!2d-113.530!3d31.318!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses-419!2smx!4v00000000000"
         loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </section>
-
   </main>
 
   <footer>
