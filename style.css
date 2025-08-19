@@ -48,3 +48,24 @@ input.form-control, textarea.form-control, select.form-select {
 
 /* Rating stars alignment */
 .rating i { margin-right: 2px; }
+  box-shadow: 0 8px 18px rgba(0,0,0,.15);
+}
+
+/* ===== Colores de botones en tarjetas ===== */
+.actions a.whatsapp {
+  background: #25D366;   /* Verde WhatsApp */
+  color: #fff;
+  border: none;
+}
+
+.actions a.call {
+  background: #007bff;   /* Azul llamada */
+  color: #fff;
+  border: none;
+}
+
+.actions a.maps {
+  background: #dc3545;   /* Rojo Google Maps */
+  color: #fff;
+  border: none;
+}
