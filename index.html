@@ -3,288 +3,155 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Directorio Puerto Peñasco — Droidea Metal</title>
-<meta name="description" content="Directorio moderno de negocios en Puerto Peñasco. Búsqueda, categorías, mapa. Estilo androide azul metálico.">
+<title>Directorio Puerto Peñasco</title>
+<meta name="description" content="Directorio de negocios en Puerto Peñasco: restaurantes, cafeterías, hoteles, tours, servicios, tiendas y casas de cambio.">
 <style>
   :root{
-    /* Paleta azul–gris metálico */
-    --bg:#0a1015;           /* noche profunda */
-    --steel:#10161d;        /* panel base */
-    --steel-2:#19222c;      /* acero oscuro */
-    --steel-3:#243140;      /* acero medio */
-    --ink:#e8eff7;          /* texto principal */
-    --muted:#9ba7b6;
-    --line:rgba(255,255,255,.14);
+    /* Base clara */
+    --bg:#ffffff;
+    --text:#222;
+    --muted:#555;
+    --line:#e5edf6;
 
-    /* Neón / acentos */
-    --neon:#6fd3ff;         /* cian eléctrico */
-    --neon-2:#4aa8ff;       /* azul eléctrico */
-    --glow-c:0 0 18px rgba(111,211,255,.45);
-    --glow-b:0 0 18px rgba(74,168,255,.35);
+    /* Azul metálico claro */
+    --blue:#5fb6ff;
+    --blue2:#8ed8ff;
 
-    --glass:rgba(255,255,255,.06);
-    --shadow:0 10px 32px rgba(0,0,0,.5);
+    /* UI */
+    --card:#fff;
+    --softshadow:0 4px 14px rgba(0,0,0,.06);
   }
   *{box-sizing:border-box}
-  html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial}
-  a{color:var(--neon);text-decoration:none}
-
-  /* Fondo con grid + viñeta */
-  body:before{
-    content:"";position:fixed;inset:0;z-index:-2;
-    background:
-      radial-gradient(1200px 600px at 10% 0%, rgba(79,160,255,.09), transparent 60%),
-      radial-gradient(1000px 500px at 90% 100%, rgba(111,211,255,.08), transparent 60%),
-      linear-gradient(transparent 31px, rgba(255,255,255,.03) 32px),
-      linear-gradient(90deg, transparent 31px, rgba(255,255,255,.03) 32px);
-    background-size:auto,auto,32px 32px,32px 32px;
-    pointer-events:none;
-  }
-
+  html,body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial}
+  a{color:var(--blue);text-decoration:none}
   .wrap{max-width:1120px;margin:0 auto;padding:16px}
 
-  /* ====== Topbar ====== */
-  .topbar{display:flex;align-items:center;justify-content:space-between;padding:10px 0}
-  .brand{font-weight:900;letter-spacing:.6px}
-  .tag{font-size:12px;color:var(--muted)}
-  .lang{display:flex;gap:8px}
-  .lang button{
-    padding:8px 10px;border-radius:10px;border:1px solid var(--line);
-    background:linear-gradient(180deg,#0d141b,#0a1218);
-    color:var(--ink);cursor:pointer;font-weight:700
-  }
-  .lang button.active{border-color:var(--neon);box-shadow:inset 0 0 0 1px var(--neon), var(--glow-c)}
-
-  /* ====== HERO metálico ====== */
+  /* FRANJA (hero) azul metálico claro, título centrado */
   .hero{
-    position:relative;height:50vh;min-height:340px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+    position:relative; height:280px; display:grid; place-items:center; color:#fff; text-align:center;
     background:
-      linear-gradient(180deg, rgba(10,16,21,.1), rgba(10,16,21,.75)),
-      url('assets/PuertoPenasco.jpg') center/cover no-repeat fixed;
-    display:grid;place-items:center;overflow:hidden;
+      linear-gradient(135deg, var(--blue), var(--blue2));
+    overflow:hidden;
   }
-  /* Overlay metal cepillado horizontal */
-  .hero:after{
-    content:"";position:absolute;inset:0;mix-blend-mode:screen;pointer-events:none;opacity:.35;
+  /* sutil “metal cepillado” */
+  .hero::after{
+    content:""; position:absolute; inset:0; pointer-events:none; opacity:.15;
     background:
-      repeating-linear-gradient(0deg, rgba(160,200,230,.08) 0 1px, rgba(0,0,0,0) 2px 4px);
+      repeating-linear-gradient(0deg, rgba(255,255,255,.6) 0 1px, transparent 2px 5px);
+    mix-blend-mode:screen;
   }
-  /* Bordes de circuito en esquinas */
-  .hero .corner{
-    position:absolute;width:120px;height:120px;border:1px solid rgba(111,211,255,.35);filter:drop-shadow(var(--glow-c));
-  }
-  .corner.tl{top:16px;left:16px;border-right:none;border-bottom:none}
-  .corner.tr{top:16px;right:16px;border-left:none;border-bottom:none}
-  .corner.bl{bottom:16px;left:16px;border-right:none;border-top:none}
-  .corner.br{bottom:16px;right:16px;border-left:none;border-top:none}
-
-  .heroTitle{
-    position:relative;text-align:center;font-weight:900;line-height:1.05;text-transform:uppercase;
-    font-size:clamp(28px,6vw,58px);padding:16px 24px;border-radius:18px;
-    background:
-      linear-gradient(180deg, rgba(0,0,0,.25), rgba(0,0,0,.55)),
-      linear-gradient(90deg, rgba(111,211,255,.18), rgba(74,168,255,.18));
-    border:1px solid var(--line);box-shadow:var(--glow-c);
-  }
-  /* Cromo azulado en el texto */
-  .heroTitle .chrome{
-    background:
-      linear-gradient(180deg,#cfe9ff 0%,#6fd3ff 18%,#cfe9ff 32%,#6aa2d8 48%,#d3e8ff 62%,#7fc6ff 78%,#e8f4ff 100%);
-    -webkit-background-clip:text;background-clip:text;color:transparent;
-    text-shadow: 0 2px 12px rgba(111,211,255,.22);
+  .hero h1{
+    margin:0; padding:14px 20px; font-size:clamp(28px,6vw,56px);
+    font-weight:900; text-transform:uppercase; letter-spacing:.5px;
   }
 
-  /* ====== Search vidrio/metal ====== */
+  /* Buscador */
   .search{
-    margin:-30px auto 20px;padding:14px;width:min(94%,880px);
-    background:
-      linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.03)),
-      repeating-linear-gradient(90deg, rgba(255,255,255,.05) 0 1px, transparent 2px 6px);
-    border:1px solid var(--line);border-radius:14px;backdrop-filter:blur(6px);box-shadow:var(--shadow)
+    margin:-30px auto 28px; padding:16px; width:min(94%,880px);
+    background:#f6faff; border:1px solid var(--line); border-radius:12px; box-shadow:var(--softshadow);
   }
-  .search form{display:flex;gap:10px}
+  .search form{display:flex; gap:10px}
   .search input{
-    flex:1;padding:12px 14px;border-radius:12px;border:1px solid var(--line);
-    background:linear-gradient(180deg,#0c131a,#0a1015);color:var(--ink);outline:none
+    flex:1; padding:12px; border-radius:8px; border:1px solid var(--line); outline:none;
   }
-  .btn{
-    cursor:pointer;padding:12px 16px;border-radius:12px;border:0;font-weight:900;letter-spacing:.2px;
-    background:linear-gradient(180deg,var(--neon),var(--neon-2));color:#03141a;
-    box-shadow:0 6px 18px rgba(79,160,255,.35)
+  .search button{
+    padding:12px 16px; border:0; border-radius:8px; cursor:pointer; font-weight:700; color:#fff;
+    background:linear-gradient(135deg, var(--blue), var(--blue2));
   }
-  .btn:hover{filter:brightness(1.06)}
 
-  /* ====== Cards metálicas compactas ====== */
-  .sectionHead{display:flex;align-items:center;justify-content:space-between;margin:8px 2px}
-  .sectionHead h2{font-size:18px;margin:0}
-  .cats{display:grid;gap:12px;grid-template-columns:repeat(auto-fill,minmax(168px,1fr));margin:12px 0 22px}
+  /* Secciones & tarjetas */
+  h2{margin:24px 0 12px; font-size:20px; color:#1e6fcf}
+  .grid{display:grid; gap:12px; grid-template-columns:repeat(auto-fill, minmax(240px,1fr)); margin-bottom:30px}
   .card{
-    position:relative;background:
-      linear-gradient(180deg, var(--steel-2), var(--steel)),
-      repeating-linear-gradient(0deg, rgba(255,255,255,.045) 0 1px, transparent 2px 4px);
-    border:1px solid var(--line);border-radius:16px;padding:14px;min-height:114px;
-    display:flex;flex-direction:column;justify-content:space-between;
-    transition:transform .15s ease, box-shadow .15s ease, border-color .15s ease;
+    background:var(--card); border:1px solid var(--line); border-radius:12px; padding:14px; box-shadow:var(--softshadow);
   }
-  .card:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(0,0,0,.38);border-color:rgba(111,211,255,.5)}
-  .chip{
-    align-self:flex-start;font-size:12px;padding:6px 10px;border-radius:999px;color:var(--muted);
-    background:linear-gradient(180deg,#16202a,#0f161e);border:1px solid var(--line)
-  }
-  .card h3{margin:8px 0 2px;font-size:16px}
-  .meta{font-size:12px;color:var(--muted)}
+  .card h3{margin:6px 0 4px; font-size:16px}
+  .meta{font-size:13px; color:var(--muted)}
 
-  /* Icono “circuito” */
-  .ico{width:22px;height:22px;display:inline-block;vertical-align:-4px;margin-right:6px;filter:drop-shadow(0 0 6px rgba(111,211,255,.25))}
-  .ico path{stroke:var(--neon);stroke-width:1.6;fill:none}
-
-  /* ====== Mapa con marco de acero ====== */
+  /* Mapa al final para alargar la página */
   .mapWrap{
-    margin:20px 0;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:#0b0f14;box-shadow:var(--shadow);
-    position:relative;
+    margin:8px 0 30px; border:1px solid var(--line); border-radius:12px; overflow:hidden; box-shadow:var(--softshadow);
+    background:#f6faff;
   }
-  .mapWrap:before{
-    content:"";position:absolute;inset:0;pointer-events:none;opacity:.18;
-    background:repeating-linear-gradient(0deg, rgba(180,210,240,.12) 0 1px, transparent 2px 4px);
-  }
-  .map{width:100%;height:360px;border:0;display:block;filter:saturate(1.05) contrast(1.06)}
+  .map{width:100%; height:380px; border:0; display:block}
 
-  /* ====== CTA inferior ====== */
-  .cta{
-    position:sticky;bottom:0;z-index:10;border-top:1px solid var(--line);
-    background:linear-gradient(180deg,rgba(10,16,21,.9),rgba(10,16,21,.96));backdrop-filter:blur(6px)
-  }
-  .cta .row{display:flex;gap:10px;padding:10px 0;flex-wrap:wrap}
-  .cta .row a{flex:1;text-align:center;padding:12px 14px;border-radius:12px;font-weight:900;letter-spacing:.2px}
-  .cta .whatsapp{background:linear-gradient(180deg,#7ff0c9,#2bb987);color:#01150e;box-shadow:var(--glow-c)}
-  .cta .register{background:linear-gradient(180deg,#ffe08e,#ff9f2b);color:#231500}
-  .cta .contact{background:linear-gradient(180deg,#c7d4ff,#5d81ff);color:#0a0f2b}
-
-  /* ====== Footer ====== */
-  .divider{height:1px;background:linear-gradient(90deg,transparent,var(--line),transparent);margin:8px 0 16px}
-  footer{color:var(--muted);font-size:12px;padding:18px 0 70px}
-
-  /* Accesibilidad */
-  :focus-visible{outline:2px dashed var(--neon);outline-offset:2px}
+  /* Footer con respiro extra */
+  footer{border-top:1px solid var(--line); padding:26px 16px 40px; color:var(--muted); font-size:14px; text-align:center}
 </style>
 </head>
 <body>
 
-  <div class="wrap">
-    <div class="topbar">
-      <div>
-        <div class="brand">Droidea <span style="color:var(--neon)">·</span> Directory</div>
-        <div class="tag">Puerto Peñasco · MX</div>
-      </div>
-      <div class="lang">
-        <button class="active" aria-label="Español" id="langES">ES</button>
-        <button aria-label="English" id="langEN">EN</button>
-      </div>
-    </div>
-  </div>
-
-  <header class="hero" role="banner" aria-label="Cabecera con imagen de Puerto Peñasco">
-    <div class="corner tl"></div><div class="corner tr"></div>
-    <div class="corner bl"></div><div class="corner br"></div>
-    <h1 class="heroTitle"><span class="chrome">Puerto Peñasco</span> Directory</h1>
+  <!-- Franja azul metálico (sin foto), mismo título centrado -->
+  <header class="hero" role="banner" aria-label="Cabecera">
+    <h1>Puerto Peñasco Directory</h1>
   </header>
 
-  <div class="wrap">
+  <main class="wrap">
+    <!-- Buscador -->
     <section class="search" aria-label="Buscador">
       <form onsubmit="event.preventDefault()">
-        <input type="search" placeholder="Buscar negocios, ej. 'cafetería', 'hotel', 'tours'…" aria-label="Buscar">
-        <button class="btn" type="submit">Buscar</button>
+        <input type="search" placeholder="Buscar negocios (ej. cafetería, hotel, cambio)" aria-label="Buscar">
+        <button type="submit">Buscar</button>
       </form>
     </section>
 
-    <div class="sectionHead">
-      <h2>Categorías</h2>
-      <small class="meta">Compactas · Acero azul</small>
+    <!-- Restaurantes -->
+    <h2>Restaurantes</h2>
+    <div class="grid">
+      <article class="card"><h3>Mariscos El Golfo</h3><p class="meta">Cocteles, ceviches, aguachiles</p></article>
+      <article class="card"><h3>Parrilla del Mar</h3><p class="meta">Cortes y mariscos a la brasa</p></article>
     </div>
-    <section class="cats" aria-label="Categorías de negocios">
-      <article class="card">
-        <span class="chip">★ Popular</span>
-        <h3>
-          <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 3v7a3 3 0 0 0 6 0V3M10 8H4M14 3v13m6-7h-6"/></svg>
-          Restaurantes
-        </h3>
-        <div class="meta">Mariscos, parrillas, comida local</div>
-      </article>
 
-      <article class="card">
-        <span class="chip">☕</span>
-        <h3>
-          <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h11a3 3 0 1 0 0 6H4zM15 8v6M6 18h10"/></svg>
-          Cafeterías
-        </h3>
-        <div class="meta">Especialidad, postres, Wi‑Fi</div>
-      </article>
+    <!-- Cafeterías -->
+    <h2>Cafeterías</h2>
+    <div class="grid">
+      <article class="card"><h3>Café Aroma</h3><p class="meta">Café de especialidad y postres</p></article>
+      <article class="card"><h3>La Taza Azul</h3><p class="meta">Wi‑Fi, desayunos y pan dulce</p></article>
+    </div>
 
-      <article class="card">
-        <span class="chip">🏨</span>
-        <h3>
-          <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20V6h16v14M8 10h8M6 14h12M10 6v14M14 6v14"/></svg>
-          Hoteles
-        </h3>
-        <div class="meta">Frente al mar, céntricos</div>
-      </article>
+    <!-- Hoteles & Tours -->
+    <h2>Hoteles & Tours</h2>
+    <div class="grid">
+      <article class="card"><h3>Hotel Vista al Mar</h3><p class="meta">Habitaciones frente al mar</p></article>
+      <article class="card"><h3>Tours Las Dunas</h3><p class="meta">RZR, arena y aventuras guiadas</p></article>
+    </div>
 
-      <article class="card">
-        <span class="chip">⛵</span>
-        <h3>
-          <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 18c4 2 12 2 16 0M12 4l6 10H6z"/></svg>
-          Tours
-        </h3>
-        <div class="meta">Barco, dunas, aventura</div>
-      </article>
+    <!-- Servicios (Herrería / Plomería) -->
+    <h2>Servicios</h2>
+    <div class="grid">
+      <article class="card"><h3>Herrería López</h3><p class="meta">Portones, estructuras metálicas</p></article>
+      <article class="card"><h3>Plomería Rápida</h3><p class="meta">Instalaciones y reparaciones</p></article>
+    </div>
 
-      <article class="card">
-        <span class="chip">🛠️</span>
-        <h3>
-          <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 21l6-6M7 17l-4 4M14 7l7-4-4 7-9 9-4 1 1-4z"/></svg>
-          Servicios
-        </h3>
-        <div class="meta">Herrería, plomería, hogar</div>
-      </article>
+    <!-- Tiendas (Ropa / Artesanías) -->
+    <h2>Tiendas</h2>
+    <div class="grid">
+      <article class="card"><h3>Moda Joven</h3><p class="meta">Ropa casual y accesorios</p></article>
+      <article class="card"><h3>Artesanías del Desierto</h3><p class="meta">Souvenirs y arte local</p></article>
+    </div>
 
-      <article class="card">
-        <span class="chip">🛍️</span>
-        <h3>
-          <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 8l-1 12h14L18 8zM9 8a3 3 0 0 1 6 0"/></svg>
-          Tiendas
-        </h3>
-        <div class="meta">Ropa, artesanías, souvenirs</div>
-      </article>
-    </section>
+    <!-- Casas de Cambio -->
+    <h2>Casas de Cambio</h2>
+    <div class="grid">
+      <article class="card"><h3>Cambio Peñasco</h3><p class="meta">Dólar ↔ Peso, tasas competitivas</p></article>
+      <article class="card"><h3>Money Express</h3><p class="meta">Transferencias y divisas</p></article>
+    </div>
 
-    <section class="mapWrap" aria-label="Mapa">
-      <iframe class="map" title="Mapa de negocios"
+    <!-- Google Maps al final -->
+    <section class="mapWrap" aria-label="Mapa de negocios">
+      <iframe class="map" title="Mapa de negocios en Puerto Peñasco"
         src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d13288.5904!2d-113.530!3d31.318!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses-419!2smx!4v00000000000"
         loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </section>
 
-    <div class="divider"></div>
+  </main>
 
-    <footer>
-      © <span id="yr"></span> Droidea Directory — Puerto Peñasco. Azul metálico & androide.
-    </footer>
-  </div>
-
-  <nav class="cta" aria-label="Acciones rápidas">
-    <div class="wrap">
-      <div class="row">
-        <a class="whatsapp" href="https://wa.me/526381129259?text=Hola%20quiero%20aparecer%20en%20el%20Directorio%20de%20Puerto%20Pe%C3%B1asco" target="_blank" rel="noopener">WhatsApp</a>
-        <a class="register" href="register.html">Registrar negocio</a>
-        <a class="contact" href="#contacto">Contacto</a>
-      </div>
-    </div>
-  </nav>
+  <footer>
+    © <span id="yr"></span> Puerto Peñasco Directory — Todos los derechos reservados.
+  </footer>
 
 <script>
   document.getElementById('yr').textContent = new Date().getFullYear();
-  const es=document.getElementById('langES'), en=document.getElementById('langEN');
-  es?.addEventListener('click',()=>{es.classList.add('active');en.classList.remove('active');});
-  en?.addEventListener('click',()=>{en.classList.add('active');es.classList.remove('active');});
 </script>
 </body>
 </html>
